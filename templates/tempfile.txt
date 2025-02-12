@@ -1,0 +1,2 @@
+Used to separate Components folder with Templates folder.
+Delete after adding Jinja template(s) to the main templates folder.
