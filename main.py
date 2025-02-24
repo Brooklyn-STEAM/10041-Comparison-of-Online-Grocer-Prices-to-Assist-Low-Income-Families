@@ -1,9 +1,9 @@
-## Imports
+#<--- Imports --->#
 from flask import Flask, render_template, request, redirect, flash, abort
 import pymysql
 from dynaconf import Dynaconf
 import flask_login
-## Imports
+#<--- Imports --->#
 
 
 ## Application
@@ -73,3 +73,22 @@ def load_user(user_id):
 
     if result is not None:
         return User(result["id"], result["username"], result["password"], result["zipcode"])
+    
+
+#<--- Routes --->#
+## Homepage
+@app.route("/")
+def index():
+    return render_template("homepage.html.jinja")
+
+
+## Sign Up Page
+@app.route("/register")
+def signup():
+    return render_template("signup.html.jinja")
+
+
+## Log In Page
+@app.route("/login")
+def login():
+    return render_template("login.html.jinja")
