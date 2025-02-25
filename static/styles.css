@@ -1,0 +1,47 @@
+body {
+    background-color: #FDF2E4;
+}
+
+.text-OldLace {
+    color: #FDF2E4;
+}
+
+.text-HunterGreen {
+    color: #486D4E;
+}
+
+.text-White {
+    color: #FFFFFF;
+}
+
+.text-Cambridge {
+    color: #77A780;
+}
+
+.text-Jasmine {
+    color: #EFD577;
+}
+
+.text-Black {
+    color: #231F20;
+}
+
+.primaryColor {
+    background-color: #5C8463;
+}
+
+.secondaryColor {
+    background-color: #77A780;
+}
+
+.tertiaryColor {
+    background-color: #EFD577;
+}
+
+.border-White {
+    border: 1px solid #FFFFFF;
+}
+
+.border-Cambridge {
+    border: 1px solid #77A780;
+}
