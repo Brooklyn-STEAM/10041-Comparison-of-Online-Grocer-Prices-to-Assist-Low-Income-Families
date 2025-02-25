@@ -45,3 +45,7 @@ body {
 .border-Cambridge {
     border: 1px solid #77A780;
 }
+
+#products-heading {
+    visibility: hidden;
+}
