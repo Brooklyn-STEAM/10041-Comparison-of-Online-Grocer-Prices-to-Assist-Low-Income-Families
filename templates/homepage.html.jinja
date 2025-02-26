@@ -4,34 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cheap Carts</title>
+    <link rel="icon" href="/static/other_images/temp-logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <style>
-    #popular-products {
-        background: url("static/other_images/popular-products.png");
-        background-repeat: no-repeat;
-        background-size: 500px;
-        height: 600px;
-
-    }
-
-    #offer {
-        background-image: url("static/other_images/what-we-offer.png");
-        background-repeat: no-repeat;
-        background-size: 500px;
-        width: 600px;
-    }
-
-    #misson {
-        background-image: url("static/other_images/mission-statement.png");
-        background-repeat: no-repeat;
-        background-size: 500px;
-        width: 600px;
-    }
-
-    </style>
-
+    <link rel="stylesheet" href="/static/styles.css">
   </head>
+
   <body>
   {% include "components/navbar.html.jinja"%}
 
@@ -40,21 +17,22 @@
 
     <div class="container mt-5">
     <div class="row">
-        <div class="col" id="popular-products">
-            <h2 id="products-heading" class="text-center mt-5">Popular Products</h2>
-            <a href="#" class="btn text-center">Get Started</a>
-
+        <div class="col contrast position-relative" id="popular-products">
+            <h2 class="text-center position-absolute top-50 start-50 translate-middle foreground-text">Popular Products
+            <a href="#" class="btn text-center">Get Started</a></h2>
         </div>
 
-        <div class="col" id="offer">
-            <h2 class="text-center mt-5">What We Offer</h2>
+        <div class="col contrast position-relative" id="offer">
+            <h2 class="text-center position-absolute top-50 start-50 translate-middle foreground-text">What We Offer</h2>
         </div>
     </div>
     
-    <div class="row">
-        <div class="col" id="mission">
-            <h2 class="text-center">Mission Statement</h2>
-            <p class="text-center">Insert text here</p>
+    <div class="row contrast">
+    <!-- Remove text-OldLace color        ↓↓↓↓↓↓↓↓↓↓↓↓ -->
+        <div class="col position-relative text-OldLace" id="mission">
+            <img src="static/other_images/mission-statement.png" class="img-fluid background-image">
+            <h2 class="text-center position-absolute top-50 start-50 translate-middle foreground-text">Mission Statement
+            <span class="text-center fs-4">Insert text here</span></h2>
         </div>
     </div>
     </div>
