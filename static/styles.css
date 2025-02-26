@@ -52,6 +52,7 @@ body {
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+
 #popular-products:hover #products-heading {
     opacity: 1;
     visibility: visible;
@@ -85,10 +86,6 @@ body {
 
 #misson {
     width: auto;
-}
-
-.contrast {
-    border: 1px solid #231F20;
 }
 
 .background-image {
