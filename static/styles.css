@@ -49,3 +49,35 @@ body {
 #products-heading {
     visibility: hidden;
 }
+
+#popular-products {
+    background: url("static/other_images/popular-products.png");
+    background-repeat: no-repeat;
+    background-size: 500px;
+    height: 600px;
+
+}
+
+#offer {
+    background-image: url("static/other_images/what-we-offer.png");
+    background-repeat: no-repeat;
+    background-size: 500px;
+    width: 600px;
+}
+
+#misson {
+    width: auto;
+}
+
+.contrast {
+    border: 1px solid #231F20;
+}
+
+.background-image {
+    z-index: -1;
+}
+
+.foreground-text {
+    z-index: 1;
+    white-space: pre-line;
+}
