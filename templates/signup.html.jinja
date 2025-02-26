@@ -13,14 +13,18 @@
         {% include "components/navbar.html.jinja" %}
         <div class="container mt-5 mx-auto">
             <div class="row justify-content-center">
-                <div class="card w-50 shadow-lg rounded-5">
+                <div class="card w-50 shadow-lg rounded-5 mb-5">
                     <div class="col-8 mx-auto">
                         <h1 class="text-center text-HunterGreen mt-4">Sign Up</h1>
                         <hr class="mx-auto mb-4">
-                        <form method="post">
+                        <form action="/register" method="post">
                             <div class="mb-3">
                                 <label for="username" class="form-label text-HunterGreen mb-1">Username</label>
                                 <input type="text" class="form-control mb-4" id="username" name="username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="zip" class="form-label text-HunterGreen mb-1">Zipcode</label>
+                                <input type="text" class="form-control mb-4" id="zip" name="zipcode" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label text-HunterGreen mb-1">Password</label>
@@ -32,6 +36,7 @@
                             </div>
                             <button type="submit" class="btn tertiaryColor text-Black">Sign Up</button>
                         </form>
+                        <hr class="mx-auto mb-4">
                         <p class="mt-3 text-HunterGreen mb-5">Already have an account? <a href="/login">Log in</a></p>
                     </div>
                 </div>

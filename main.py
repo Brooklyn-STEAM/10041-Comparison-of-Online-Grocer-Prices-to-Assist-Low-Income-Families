@@ -83,8 +83,52 @@ def index():
 
 
 ## Sign Up Page
-@app.route("/register")
+@app.route("/register", methods=["POST", "GET"])
 def signup():
+    if flask_login.current_user.is_authenticated:
+        return redirect("/products")
+    
+    if request.method =="POST":
+        username = request.form["username"]
+        zipcode = request.form["zipcode"]
+        password = request.form["password"]
+        confpass = request.form["confirm_password"]
+
+        conn = conn_db()
+
+        cursor = conn.cursor()
+
+        if len(username.strip()) >20:
+            flash("Username must be 20 characters or less.")
+
+        else:
+            if len(password.strip()) < 8:
+                flash("Password must be 8 characters or longer.")
+            
+            else:
+                if password != confpass:
+                    flash("Passwords do not match.")
+                
+                else:
+                    try:
+                        cursor.execute(f"""
+                            INSERT INTO `Users`
+                                (`username`, `password`, `zipcode`)
+                            VALUES
+                                ('{username}', '{password}', '{zipcode}');
+                        """)
+                    
+                    except pymysql.err.IntegrityError:
+                        flash("Username is already in use.")
+                    
+                    else:
+                        return redirect("/login")
+                    
+                    finally:
+                        ##Close Connections
+                        cursor.close()
+                        conn.close()
+
     return render_template("signup.html.jinja")
 
 
@@ -92,3 +136,29 @@ def signup():
 @app.route("/login")
 def login():
     return render_template("login.html.jinja")
+
+
+## Popular Products Page
+@app.route("/products")
+def popular_products():
+    return render_template("popular_products.html.jinja")
+
+
+## Comparison Page
+@app.route("/compare")
+def comparison():
+    return render_template("comparison.html.jinja")
+
+
+## Leftovers Page
+@app.route("/leftovers")
+@flask_login.login_required
+def leftovers():
+    return render_template("saved_products.html.jinja")
+
+
+## Account Page
+@app.route("/settings")
+@flask_login.login_required
+def account():
+    return render_template("account.html.jinja")
