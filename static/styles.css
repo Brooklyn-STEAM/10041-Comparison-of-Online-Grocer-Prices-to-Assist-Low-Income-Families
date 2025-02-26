@@ -51,26 +51,16 @@ body {
 }
 
 #popular-products {
-    background: url("static/other_images/popular-products.png");
-    background-repeat: no-repeat;
-    background-size: 500px;
-    height: 600px;
+    height: auto;
 
 }
 
 #offer {
-    background-image: url("static/other_images/what-we-offer.png");
-    background-repeat: no-repeat;
-    background-size: 500px;
-    width: 600px;
+    width: auto;
 }
 
 #misson {
     width: auto;
-}
-
-.contrast {
-    border: 1px solid #231F20;
 }
 
 .background-image {
