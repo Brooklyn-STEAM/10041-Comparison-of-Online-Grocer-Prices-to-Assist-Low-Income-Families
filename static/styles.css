@@ -69,6 +69,26 @@ body {
     width: auto;
 }
 
+.product-card {
+    width: 240px;
+}
+
+.product-card:hover {
+    background-color: #77A780;
+    border-color: #5C8463;
+}
+
+.product-search {
+    background-color: #77A780;
+    color: white;
+}
+
+.product-search:hover {
+  background-color: #5C8463;
+  border-color: #77A780;
+  color: #f0f0f0;
+}
+
 .contrast {
     border: 1px solid #231F20;
 }
