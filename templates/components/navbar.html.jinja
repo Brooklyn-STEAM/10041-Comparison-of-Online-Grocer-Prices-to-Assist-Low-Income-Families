@@ -1,19 +1,20 @@
 <nav class="navbar navbar-expand-lg primaryColor sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand text-White" href="#">
+    <a class="navbar-brand text-White" href="/">
       <img src="/static/other_images/temp-logo.png" alt="Cheap Carts" width="24" height="24" class="d-inline-block align-text-top">
       Cheap Carts
     </a>
+    <script src="/static/styles.js"></script>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link text-White" aria-current="page" href="#">Home</a>
+          <a class="nav-link text-White" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-White" href="#">Link</a>
+          <a class="nav-link text-White" href="/products">Products</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-White" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -27,10 +28,28 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+      <form class="d-flex me-3" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn text-White secondaryColor border-White" type="submit">Search</button>
       </form>
+
+      {%if current_user.is_authenticated%}
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hello, {{current_user.username}}!
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/settings">Account</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
+          </div>
+      {%else%}
+          <form class="d-flex" action="/login">
+              <button class="btn tertiaryColor text-Black" type="submit">Log In</button>
+          </form>
+      {%endif%}
+
     </div>
   </div>
 </nav>
