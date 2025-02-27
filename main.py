@@ -32,10 +32,9 @@ class User:
     is_anonymous = False
     is_active = True
 
-    def __init__(self, user_id, username, password, zipcode):
+    def __init__(self, user_id, username, zipcode):
         self.id = user_id
         self.username = username
-        self.password = password
         self.zip = zipcode
 
     def get_id(self):
@@ -72,7 +71,7 @@ def load_user(user_id):
     conn.close()
 
     if result is not None:
-        return User(result["id"], result["username"], result["password"], result["zipcode"])
+        return User(result["id"], result["username"], result["zipcode"])
     
 
 #<--- Routes --->#
@@ -89,20 +88,20 @@ def signup():
         return redirect("/products")
     
     if request.method =="POST":
-        username = request.form["username"]
-        zipcode = request.form["zipcode"]
-        password = request.form["password"]
-        confpass = request.form["confirm_password"]
+        username = request.form["username"].strip().replace(" ", "")
+        zipcode = request.form["zipcode"].strip().replace(" ", "")
+        password = request.form["password"].strip().replace(" ", "")
+        confpass = request.form["confirm_password"].strip().replace(" ", "")
 
         conn = conn_db()
 
         cursor = conn.cursor()
 
-        if len(username.strip()) >20:
+        if len(username) >20:
             flash("Username must be 20 characters or less.")
 
         else:
-            if len(password.strip()) < 8:
+            if len(password) < 8:
                 flash("Password must be 8 characters or longer.")
             
             else:
@@ -133,8 +132,40 @@ def signup():
 
 
 ## Log In Page
-@app.route("/login")
+@app.route("/login", methods=["POST", "GET"])
 def login():
+    if flask_login.current_user.is_authenticated:
+        return redirect("/products")
+    
+    if request.method == "POST":
+        username = request.form["userVer"].strip().replace(" ", "")
+        password = request.form["passVer"].strip().replace(" ", "")
+
+        conn = conn_db()
+
+        cursor = conn.cursor()
+
+        cursor.execute(f"SELECT * FROM `Users` WHERE `username` = '{username}';")
+
+        result = cursor.fetchone()
+
+        ##Close Connections
+        cursor.close()
+        conn.close()
+
+        if result is None:
+            flash("Your username and/or password is incorrect.")
+        
+        elif password != result["password"]:
+            flash("Your username and/or password is incorrect.")
+
+        else:
+            user = User(result["id"], result["username"], result["zipcode"])
+
+            flask_login.login_user(user)
+
+            return redirect("/products")
+        
     return render_template("login.html.jinja")
 
 
@@ -162,3 +193,10 @@ def leftovers():
 @flask_login.login_required
 def account():
     return render_template("account.html.jinja")
+
+
+## Log Out
+@app.route("/logout")
+def logout():
+    flask_login.logout_user()
+    return redirect("/")
