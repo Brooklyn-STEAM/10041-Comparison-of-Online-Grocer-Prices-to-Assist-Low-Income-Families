@@ -101,6 +101,20 @@ body {
     color: #ffffff;
 }
 
+.product-card {
+    width: 240px;
+}
+
+.product-card:hover {
+    background-color: #77A780;
+    border-color: #5C8463;
+}
+
+.product-search {
+    background-color: #77A780;
+    color: #ffffff;
+}
+
 .product-search:hover {
   background-color: #5C8463;
   border-color: #77A780;
