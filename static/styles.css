@@ -132,15 +132,47 @@ body {
     color: white;
 }
 
-#back-products {
+.back-products {
     background-color: #77A780;
     border-color: #5C8463;
 }
 
-#back-products:hover {
+.back-products:hover {
     background-color: #486D4E;
     border-color: #77A780;
     color: white;
+}
+
+
+.saved-card {
+    height: 150px;
+}
+
+.saved-card:hover {
+    background-color: #77A780;
+    border-color: #5C8463;
+}
+
+#saved-main {
+    width: 740px;
+    height: 340px;
+}
+
+#saved-header {
+    width: 700px;
+}
+
+#saved-search {
+    width: 100%;
+}
+
+hr {
+    border: none;
+    border-top: 5px solid #486D4E;
+    color: #486D4E;
+    background-color: #486D4E;
+    height: 7px;
+    margin: 20px 20px;
 }
 
 .background-image {
