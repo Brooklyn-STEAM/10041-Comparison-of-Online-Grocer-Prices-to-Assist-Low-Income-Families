@@ -166,13 +166,52 @@ body {
     width: 100%;
 }
 
-hr {
+#saved-rule {
     border: none;
     border-top: 5px solid #486D4E;
     color: #486D4E;
     background-color: #486D4E;
     height: 7px;
     margin: 20px 20px;
+}
+
+.account-header {
+    background-color: #96d4a2;
+}
+
+#delete-btn:hover, #delete-cover:hover {
+    border-color: #cb444b;
+    background-color: #ffffff;
+    color: #cb444b;
+}
+
+.account-btn {
+    background-color: #5C8463;
+    border: none;
+}
+
+.account-btn:hover {
+    background-color: #77A780;
+    border-color: #5C8463;
+    color: black;
+}
+
+.account-input:focus {
+    border-color: #96d4a2;
+    box-shadow: 0 0 0 .25rem rgba(168, 237, 181,.25);
+}
+
+#newUsernameInput:focus + #currentUserText {
+    visibility: visible;
+    display: inline;
+  }
+  
+#currentUserText {
+    visibility: hidden;
+    display: none;
+    border: none;
+    background: none;
+    margin-bottom: 5px;
 }
 
 .background-image {
