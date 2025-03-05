@@ -11,18 +11,24 @@
   <body>
     {% include "components/navbar.html.jinja"%}
 
-    <a href="/products" class="back-products fs-5 btn m-2 text-black">
+    <a href="/products" class="back-products fs-5 btn m-3 text-black">
         <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
             <path d="M1.5 7.5l4-4m-4 4l4 4m-4-4H14" stroke="currentColor"></path>
         </svg> Back to Products</a>
 
-    <main class="text-center m-5">
+    <main class="container text-center mx-5 my-4">
         <section class="row">
-            <div class="col-6 mx-3">
-                <h2 class="mx-e">Item Name</h2>
-            </div>
-            <div class="col-4 ms-5">
-                <img src="..." alt="Image of Item">
+            <div id="compare-heading-card" class="card mb-3 mx-auto w-100">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title text-start fs-1 my-4">Item Name</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="..." class="img-fluid rounded-start" alt="...">
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -36,11 +42,12 @@
                     <img src="..." class="card-img-top" alt="Image of Item Name">
                 </div>
                 <div class="card-body text-center">
-                    <p class="fs-3 mt-3">Price</p>
+                    <p class="fs-3 mt-5">Price</p>
                     <p class="fs-4">-On- Sale</p>
                 </div>
                 </a>
             </div>
+        <!--End for here-->
 
 
         
