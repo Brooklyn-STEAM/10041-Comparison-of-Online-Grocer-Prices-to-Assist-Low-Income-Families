@@ -17,26 +17,18 @@
         <li class="nav-item">
           <a class="nav-link text-White" href="/products">Products</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-White" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/leftovers">Leftovers</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link text-White" href="/leftovers">Leftovers</a>
         </li>
       </ul>
-      <form class="d-flex me-3" role="search">
+      <form class="nav-search d-flex me-3" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn text-White secondaryColor border-White" type="submit">Search</button>
       </form>
 
       {%if current_user.is_authenticated%}
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="user-btn btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Hello, {{current_user.username}}!
             </button>
             <ul class="dropdown-menu">

@@ -41,8 +41,11 @@
                         <div class="mb-3">
                             <label for="newUsernameInput" class="form-label">New Username</label>
                             <input type="text" class="form-control account-input" id="newUsernameInput" aria-describedby="newUsernameInput">
-                            <p id="currentUserText" class="form-text text-dark"><b>Current Usename: </b>{{current_user.username}}</p>
-                            <div id="sameUsernameNote" class="form-text">Your new username cannot match your current username.</div>
+
+                            <div id="userText">
+                                <p id="currentUserText" class="form-text text-dark"><b>Current Usename: </b>{{current_user.username}}</p>
+                                <p id="sameUsernameNote" class="form-text">Your new username cannot match your current username.</p>
+                            </div>
 
                             <div id="newUsernameNote" class="form-text">If you change your username and someone else takes it, you cannot have it back.</div>
                         </div>
