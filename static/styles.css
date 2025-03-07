@@ -27,7 +27,7 @@ body {
 }
 
 .primaryColor {
-    background-color: #5C8463;
+    background-color: #5c8463;
 }
 
 .secondaryColor {
@@ -268,11 +268,19 @@ body {
 }
 
 .nav-search {
-    width: 60%;
+    width: 40%;
 }
 
 #home-img {
     border: 3px solid #486D4E;
+}
+
+#guide-block {
+    height: 400px;
+}
+
+#fix {
+    display: none;
 }
 
 .background-image {
