@@ -46,7 +46,7 @@ body {
     border: 1px solid #77A780;
 }
 
-#products-heading, #offer-heading {
+#products-heading, #offer-heading, #mission-heading {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -71,21 +71,33 @@ body {
     opacity: 0.5;
 }
 
+#mission:hover #mission-heading {
+    opacity: 1;
+    visibility: visible;
+}
+
+#mission:hover #mission-img {
+    opacity: 0.2;
+}
+
 #start-btn:hover {
     background-color: #FDF2E4;
     border-color: #77A780;
 }
 
 #popular-products {
-    height: auto;
+    width: 100%;
+    padding: 0%;
 }
 
 #offer {
-    width: auto;
+    width: 100%;
+    padding: 0%;
 }
 
-#misson {
-    width: auto;
+#mission {
+    width: 100%;
+    padding: 0%;
 }
 
 .product-card {
@@ -123,13 +135,18 @@ body {
 }
 
 .compare-card{
-    height: 300px;
+    height: 350px;
+    width: 250px;
 }
 
 .compare-card:hover{
     background-color: #77A780;
     border-color: #486D4E;
     color: white;
+}
+
+#compare-heading-card {
+    height: 150px;
 }
 
 .back-products {
@@ -168,10 +185,10 @@ body {
 
 #saved-rule {
     border: none;
-    border-top: 5px solid #486D4E;
+    border-top: 2px solid #486D4E;
     color: #486D4E;
     background-color: #486D4E;
-    height: 7px;
+    height: 2px;
     margin: 20px 20px;
 }
 
@@ -201,17 +218,61 @@ body {
     box-shadow: 0 0 0 .25rem rgba(168, 237, 181,.25);
 }
 
-#newUsernameInput:focus + #currentUserText {
+#newUsernameInput:focus + #userText {
     visibility: visible;
     display: inline;
-  }
-  
-#currentUserText {
+}
+
+#userText {
     visibility: hidden;
     display: none;
     border: none;
     background: none;
     margin-bottom: 5px;
+}
+
+.save-btn .save-label {
+    display: none;
+}
+
+.save-btn .save-heart {
+    display: inline;
+}
+
+.save-btn:hover {
+    background-color: #ffffff;
+    width: 100px;
+    transition: width 5s;
+}
+
+.save-btn:hover .save-label {
+   display: inline;
+   color: #cb444b;
+   float: inline-start
+}
+
+.save-btn:hover .save-heart {
+    display: inline;
+    float: inline-end;
+    color: #cb444b;
+}
+
+.user-btn {
+    background-color: #77A780;
+    border-color: #486D4E;
+}
+
+.user-btn:hover {
+    background-color: #486D4E;
+    border-color: #77A780;
+}
+
+.nav-search {
+    width: 60%;
+}
+
+#home-img {
+    border: 3px solid #486D4E;
 }
 
 .background-image {
