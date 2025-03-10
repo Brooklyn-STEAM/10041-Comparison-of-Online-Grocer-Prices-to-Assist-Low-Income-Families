@@ -187,6 +187,10 @@ def comparison():
 def leftovers():
     return render_template("saved_products.html.jinja")
 
+## Guide Page
+@app.route("/guide")
+def guide():
+   return render_template("guide.html.jinja")
 
 ## Account Page
 @app.route("/settings")

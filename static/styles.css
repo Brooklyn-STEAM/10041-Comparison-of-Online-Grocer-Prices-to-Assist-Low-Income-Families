@@ -27,7 +27,7 @@ body {
 }
 
 .primaryColor {
-    background-color: #5C8463;
+    background-color: #5c8463;
 }
 
 .secondaryColor {
@@ -192,7 +192,7 @@ body {
     margin: 20px 20px;
 }
 
-.account-header {
+.card-header {
     background-color: #96d4a2;
 }
 
@@ -268,11 +268,35 @@ body {
 }
 
 .nav-search {
-    width: 60%;
+    width: 40%;
 }
 
 #home-img {
     border: 3px solid #486D4E;
+}
+
+#guide-block {
+    height: 400px;
+}
+
+#fix {
+    display: none;
+}
+
+.guide-link:hover {
+    color: #486D4E;
+}
+
+.guide-table:hover {
+    --bs-list-group-action-hover-bg: #96d4a2;
+    /* color: black; */
+    border: none;
+}
+
+.guide-table:active {
+    background-color: #96d4a2;
+    color: black;
+    border: none;
 }
 
 .background-image {
@@ -282,4 +306,9 @@ body {
 .foreground-text {
     z-index: 1;
     white-space: pre-line;
+}
+
+.list-group-item.active {
+    --bs-list-group-active-bg: #9bd4a2;
+    --bs-list-group-active-border-color: #9bd4a2;
 }
