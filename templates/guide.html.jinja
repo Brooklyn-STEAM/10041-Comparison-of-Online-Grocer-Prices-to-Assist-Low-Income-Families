@@ -13,20 +13,20 @@
 
 <body>
     {% include "components/navbar.html.jinja"%}
-    <h1 class="text-center mt-3">Guide</h1>
+    <h1 class="text-center my-4">Guide</h1>
 
 
-    <main class="container mt-4">
+    <main class="container mt-3">
         <div class="row">
             <div class="col-4">
-                <div id="list-example" class="list-group mt-3">
+                <div id="list-example" class="list-group mt-3 fs-3">
                     <a class="list-group-item list-group-item-action" href="#introduction">Introduction</a>
                     <a class="list-group-item list-group-item-action" href="#how-to-use">How to Use</a>
-                    <a class="list-group-item list-group-item-action" href="#save">How to Save</a>
+                    <a class="list-group-item list-group-item-action" href="#save">Saving Items</a>
                 </div>
             </div>
             <div id="guide-block" class="col-8 overflow-auto">
-                <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true">
                     <div class="card mt-3">
                         <h5 id="introduction" class="card-header fs-2 text-center">Introduction</h5>
                         <div class="card-body">
@@ -42,37 +42,31 @@
                     <div class="card mt-3">
                         <h5 id="how-to-use" class="card-header fs-2 text-center">How To Use</h5>
                         <div class="card-body">
-                            <h5 class="card-title fs-3">The Basics</h5>
                             <p class="card-text fs-5">Our site is simple and easy to use.</p>
-                            <p class="card-text fs-5">First, when you land on our <a href="/"
-                                    class="text-Cambridge link-underline link-underline-opacity-0">home page</a>, you
-                                have two options:</p>
+                            <p class="card-text fs-5">First, when you land on our <a href="/" class="guide-link text-Cambridge link-underline link-underline-opacity-0">home page</a>, you have two options:</p>
                             <ol>
                                 <li class="fs-5">
-                                    <p class="card-text fs-5">You can go to the navigation bar at the top of the screen
-                                        and click <a href="/products"
-                                            class="text-Cambridge link-underline link-underline-opacity-0">"Products"</a>,
-                                        which will take you to the Products page where you can search through our
-                                        select.</p>
+                                    <p class="card-text fs-5">
+                                    You can go to the navigation bar at the top of the screen and click <a href="/products" class="guide-link text-Cambridge link-underline link-underline-opacity-0">"Products"</a>,
+                                    which will take you to the Products page where you can search through our
+                                    selection.
+                                    </p>
                                 </li>
                                 <li class="fs-5">
                                     <p class="card-text fs-5">Or, you can hover over the first image on our site which
                                         will reveal the words "Popular Products" and a button labelled "Get Started"
-                                        which will take you right to our Product page.</p>
+                                        which will take you right to our <a href="/products" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Products</a> page.
+                                    </p>
                                 </li>
                             </ol>
 
 
-                            <p class="card-text fs-5">When you make it to the <a href="/products"
-                                    class="text-Cambridge link-underline link-underline-opacity-0">Product Page</a>, you
-                                can scroll the different products that we showcase. Clicking on one of the items will
-                                take to you to its individual page.</p>
+                            <p class="card-text fs-5">
+                            When you make it to the <a href="/products" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Product Page</a>, you can scroll through the different products that we offer. Clicking on one of the items will take to you to its individual page.</p>
 
-
-                            <p class="card-text fs-5">On this page, four online retail prices for the item you selected
-                                will be shown side by side and you can pick the option that is best for you. Selecting
-                                one of the retailer's card will take you directly to the item's page on the retailer's
-                                store for you to purchase.</p>
+                            <p class="card-text fs-5">
+                            On an item's individual page, four online retail prices for the item you selected will be shown side by side and you can pick the option that is best for you. Selecting one of the retailer's card will take you directly to the item's page on the retailer's store for you to purchase.
+                            </p>
                         </div>
                     </div>
 
@@ -80,19 +74,12 @@
                     <div class="card mt-3">
                         <h5 id="save" class="card-header fs-2 text-center">How to Save</h5>
                         <div class="card-body">
-                            <p class="card-text fs-5">We allow our customers to save different items to the <a
-                                    href="/leftovers"
-                                    class="text-Cambridge link-underline link-underline-opacity-0">Leftovers</a> page,
-                                which can be accessed from the navigation bar.</p>
-
-                            <p class="card-text fs-5">In order to save an item, you can click the red heart button on
-                                the bottom right corner of the item card on the <a href="/products"
-                                    class="text-Cambridge link-underline link-underline-opacity-0">Product Page</a> or
-                                below the item name on its individual product page.</p>
+                            <p class="card-text fs-5">Our customers can save different items to the <a href="/leftovers" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Leftovers</a> page,
+                            which can be accessed from the navigation bar.</p>
 
                             <p class="card-text fs-5 fw-bold">The Save Button looks like this:</p>
-
-                            <button class="save-btn btn btn-danger my-2">
+                            <!-- This button is not meant to be functional -->
+                            <button class="save-btn btn btn-danger mb-3 mt-2">
                                 <span class="save-label">Save</span>
                                 <span class="save-heart"><svg viewBox="0 0 15 15" fill="none"
                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20">
@@ -101,13 +88,21 @@
                                             fill="currentColor"></path>
                                     </svg></span>
                             </button>
+
+                            <p class="card-text fs-5">In order to save an item, you can click the red heart button on
+                                the bottom right corner of the item card on the <a href="/products" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Product Page</a> or
+                                below the item name on its individual product page.</p>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <div id="fix" class="row">
+
+
+
+<div id="fix" class="row">
   <div class="col-4">
     <div id="list-example" class="list-group">
       <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
@@ -129,7 +124,6 @@
     </div>
   </div>
 </div>
-
 
 
 
