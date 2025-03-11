@@ -24,9 +24,9 @@
           <a class="nav-link text-White" href="/guide">Guide</a>
         </li>
       </ul>
-      <form class="nav-search d-flex me-3" role="search">
-        <input class="text-box form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn text-White secondaryColor border-White" type="submit">Search</button>
+      <form id="nav-search" class="nav-search d-flex me-3" role="search">
+        <input class="text-box form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn text-White secondaryColor border-White h-50" type="submit">Search</button>
       </form>
 
       {%if current_user.is_authenticated%}
@@ -42,7 +42,7 @@
           </div>
       {%else%}
           <form class="d-flex" action="/login">
-              <button class="btn tertiaryColor text-Black" type="submit">Log In</button>
+              <button class="btn tertiaryColor text-Black h-50" type="submit">Log In</button>
           </form>
       {%endif%}
 
