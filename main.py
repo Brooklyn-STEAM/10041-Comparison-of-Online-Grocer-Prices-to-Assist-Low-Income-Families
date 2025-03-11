@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, flash, abort
 import pymysql
 from dynaconf import Dynaconf
 import flask_login
+from scraper import scrape
 #<--- Imports --->#
 
 
