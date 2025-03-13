@@ -307,6 +307,10 @@ body {
     border: none;
 }
 
+.active-link {
+    color: black; 
+}
+
 .background-image {
     z-index: -1;
 }

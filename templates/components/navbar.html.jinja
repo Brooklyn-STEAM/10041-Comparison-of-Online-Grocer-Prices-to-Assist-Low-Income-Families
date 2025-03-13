@@ -12,16 +12,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link text-White" aria-current="page" href="/">Home</a>
+          <a class="nav-link {% if request.path == '/' %}active-link{%else%}text-White{%endif%}" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-White" href="/products">Products</a>
+          <a class="nav-link text-White {% if request.path == '/products' %}active-link{%else%}text-White{%endif%}" href="/products">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-White" href="/leftovers">Leftovers</a>
+          <a class="nav-link text-White {% if request.path == '/leftovers' %}active-link{%else%}text-White{%endif%}" href="/leftovers">Leftovers</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-White" href="/guide">Guide</a>
+          <a class="nav-link text-White {% if request.path == '/guide' %}active-link{%else%}text-White{%endif%}" href="/guide">Guide</a>
         </li>
       </ul>
       <form id="nav-search" class="nav-search d-flex me-3" role="search">
