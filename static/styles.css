@@ -275,6 +275,20 @@ body {
     border-color: #77A780;
 }
 
+.user-btn:hover {
+    background-color: #486D4E;
+    border-color: #77A780;
+}
+
+.user-menu {
+    background-color: #96d4a2;
+}
+
+.user-menu-item:active {
+    background-color: #486D4E;
+    color: white;
+}
+
 .nav-search {
     width: 40%;
 }
