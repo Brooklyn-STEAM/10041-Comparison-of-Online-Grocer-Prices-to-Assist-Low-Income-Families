@@ -320,3 +320,9 @@ body {
     --bs-list-group-active-bg: #9bd4a2;
     --bs-list-group-active-border-color: #9bd4a2;
 }
+
+div #guide-block {
+    overflow: auto;
+    scrollbar-color: red;
+    scrollbar-width: thin;
+}
