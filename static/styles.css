@@ -1,3 +1,13 @@
+@media screen and (max-width: 991px) {
+    #nav-search {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    
+}
+
+
+
 body {
     background-color: #FDF2E4;
 }
@@ -27,7 +37,7 @@ body {
 }
 
 .primaryColor {
-    background-color: #5C8463;
+    background-color: #5c8463;
 }
 
 .secondaryColor {
@@ -46,21 +56,255 @@ body {
     border: 1px solid #77A780;
 }
 
-#products-heading {
+#products-heading, #offer-heading, #mission-heading {
+    opacity: 0;
     visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+
+#popular-products:hover #products-heading {
+    opacity: 1;
+    visibility: visible;
+}
+
+#popular-products:hover #popular-img {
+    opacity: 0.5;
+}
+
+#offer:hover #offer-heading {
+    opacity: 1;
+    visibility: visible;
+}
+
+#offer:hover #offer-img {
+    opacity: 0.5;
+}
+
+#mission:hover #mission-heading {
+    opacity: 1;
+    visibility: visible;
+}
+
+#mission:hover #mission-img {
+    opacity: 0.2;
+}
+
+#start-btn:hover {
+    background-color: #FDF2E4;
+    border-color: #77A780;
 }
 
 #popular-products {
-    height: auto;
-
+    padding: 0%;
 }
 
 #offer {
-    width: auto;
+    padding: 0%;
 }
 
-#misson {
-    width: auto;
+#mission {
+    width: 100%;
+    padding: 0%;
+}
+
+.product-card {
+    width: 240px;
+}
+
+.product-card:hover {
+    background-color: #77A780;
+    border-color: #5C8463;
+}
+
+.product-search {
+    background-color: #77A780;
+    color: #ffffff;
+}
+
+.product-card {
+    width: 240px;
+}
+
+.product-card:hover {
+    background-color: #77A780;
+    border-color: #5C8463;
+}
+
+.product-search {
+    background-color: #77A780;
+    color: #ffffff;
+}
+
+.product-search:hover {
+  background-color: #5C8463;
+  border-color: #77A780;
+  color: #f0f0f0;
+}
+
+.compare-card{
+    height: 350px;
+    width: 250px;
+}
+
+.compare-card:hover{
+    background-color: #77A780;
+    border-color: #486D4E;
+    color: white;
+}
+
+#compare-heading-card {
+    height: 150px;
+}
+
+.back-products {
+    background-color: #77A780;
+    border-color: #5C8463;
+}
+
+.back-products:hover {
+    background-color: #486D4E;
+    border-color: #77A780;
+    color: white;
+}
+
+
+.saved-card {
+    height: 150px;
+}
+
+.saved-card:hover {
+    background-color: #77A780;
+    border-color: #5C8463;
+}
+
+#saved-main {
+    width: 740px;
+    height: 340px;
+}
+
+#saved-header {
+    width: 700px;
+}
+
+#saved-search {
+    width: 100%;
+}
+
+#saved-rule {
+    border: none;
+    border-top: 2px solid #486D4E;
+    color: #486D4E;
+    background-color: #486D4E;
+    height: 2px;
+    margin: 20px 20px;
+}
+
+.card-header {
+    background-color: #96d4a2;
+}
+
+#delete-btn:hover, #delete-cover:hover {
+    border-color: #cb444b;
+    background-color: #ffffff;
+    color: #cb444b;
+}
+
+.account-btn {
+    background-color: #5C8463;
+    border: none;
+}
+
+.account-btn:hover {
+    background-color: #77A780;
+    border-color: #5C8463;
+    color: black;
+}
+
+.text-box:focus {
+    border-color: #96d4a2;
+    box-shadow: 0 0 0 .25rem rgba(168, 237, 181,.25);
+}
+
+#newUsernameInput:focus + #userText {
+    visibility: visible;
+    display: inline;
+}
+
+#userText {
+    visibility: hidden;
+    display: none;
+    border: none;
+    background: none;
+    margin-bottom: 5px;
+}
+
+.save-btn .save-label {
+    display: none;
+}
+
+.save-btn .save-heart {
+    display: inline;
+}
+
+.save-btn:hover {
+    background-color: #ffffff;
+    width: 100px;
+    transition: width 5s;
+}
+
+.save-btn:hover .save-label {
+   display: inline;
+   color: #cb444b;
+   float: inline-start
+}
+
+.save-btn:hover .save-heart {
+    display: inline;
+    float: inline-end;
+    color: #cb444b;
+}
+
+.user-btn {
+    background-color: #77A780;
+    border-color: #486D4E;
+}
+
+.user-btn:hover {
+    background-color: #486D4E;
+    border-color: #77A780;
+}
+
+.nav-search {
+    width: 40%;
+}
+
+#home-img {
+    border: 3px solid #486D4E;
+}
+
+#guide-block {
+    height: 400px;
+}
+
+#fix {
+    display: none;
+}
+
+.guide-link:hover {
+    color: #486D4E;
+}
+
+.guide-table:hover {
+    --bs-list-group-action-hover-bg: #96d4a2;
+    /* color: black; */
+    border: none;
+}
+
+.guide-table:active {
+    background-color: #96d4a2;
+    color: black;
+    border: none;
 }
 
 .background-image {
@@ -70,4 +314,9 @@ body {
 .foreground-text {
     z-index: 1;
     white-space: pre-line;
+}
+
+.list-group-item.active {
+    --bs-list-group-active-bg: #9bd4a2;
+    --bs-list-group-active-border-color: #9bd4a2;
 }

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Settings - CheapCarts</title>
+    <link rel="icon" href="/static/other_images/CheapCartsLogo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    {% include "components/navbar.html.jinja"%}
+    <h1 class="text-center mt-3">Settings</h1>
+
+    <main class="container mt-3">
+        <div class="card">
+            <div class="card-header card-header text-center h3">
+                Account Information
+            </div>
+            <div class="card-body">
+            <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+            <path d="M3 13v.5h1V13H3zm8 0v.5h1V13h-1zm-7 0v-.5H3v.5h1zm2.5-3h2V9h-2v1zm4.5 2.5v.5h1v-.5h-1zM8.5 10a2.5 2.5 0 012.5 2.5h1A3.5 3.5 0 008.5 9v1zM4 12.5A2.5 2.5 0 016.5 10V9A3.5 3.5 0 003 12.5h1zM7.5 3A2.5 2.5 0 005 5.5h1A1.5 1.5 0 017.5 4V3zM10 5.5A2.5 2.5 0 007.5 3v1A1.5 1.5 0 019 5.5h1zM7.5 8A2.5 2.5 0 0010 5.5H9A1.5 1.5 0 017.5 7v1zm0-1A1.5 1.5 0 016 5.5H5A2.5 2.5 0 007.5 8V7zm0 7A6.5 6.5 0 011 7.5H0A7.5 7.5 0 007.5 15v-1zM14 7.5A6.5 6.5 0 017.5 14v1A7.5 7.5 0 0015 7.5h-1zM7.5 1A6.5 6.5 0 0114 7.5h1A7.5 7.5 0 007.5 0v1zm0-1A7.5 7.5 0 000 7.5h1A6.5 6.5 0 017.5 1V0z" fill="currentColor"></path>
+            </svg>  
+                <h5 class="card-title d-inline fs-4">{{current_user.username}}</h5>
+                <p class="card-text mt-2"></p>
+            </div>
+        </div>
+
+
+
+        <div class="card mt-3 mb-4">
+            <div class="card-header card-header text-center h3">
+                Account Options
+            </div>
+            <div id="setting-card" class="card-body">
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item my-2">
+                    <h5 class="card-title h4">Change Username</h5>
+                    <form class="mt-3">
+                        <div class="mb-3">
+                            <label for="newUsernameInput" class="form-label">New Username</label>
+                            <input type="text" class="form-control text-box" id="newUsernameInput" aria-describedby="newUsernameInput">
+
+                            <div id="userText">
+                                <p id="currentUserText" class="form-text text-dark"><b>Current Usename: </b>{{current_user.username}}</p>
+                                <p id="sameUsernameNote" class="form-text">Your new username cannot match your current username.</p>
+                            </div>
+
+                            <div id="newUsernameNote" class="form-text">If you change your username and someone else takes it, you cannot have it back.</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2 account-btn">Submit</button>
+                    </form>
+                </li>
+
+                <li class="list-group-item my-2">
+                    <h5 class="card-title h4">Change Password</h5>
+                    <form class="mt-3">
+                        <div class="mb-3">
+                            <label for="newPasswordInput" class="form-label">New Password</label>
+                            <input type="password" class="form-control text-box" id="newPasswordInput" aria-describedby="newPasswordInput">
+                            <div id="newPasswordNote" class="form-text">We will not share your password.</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2 account-btn">Submit</button>
+                    </form>
+                </li>
+
+                <li class="list-group-item my-2">
+                    <h5 class="card-title h4">Delete Account</h5>
+                        <div class="mb-3">
+                            <label for="deleteAccount" class="form-label">Would you like to delete your account?</label>
+                            <br>
+                           <!-- Button trigger modal -->
+                            <button type="button" id="delete-cover" class="mt-2 btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                            Delete Account
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-danger" id="deleteAccountModalLabel">Account Deletion Confirmation</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Deleting your account will <b>erase all of your data.</b></p> 
+
+                                    <p>Are you sure you want to delete your account?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" id="delete-btn" class="btn btn-danger">Delete Account</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                    
+                        </div>
+                </li>
+
+            </ul>
+            </div>
+        </div>
+    
+    </main>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

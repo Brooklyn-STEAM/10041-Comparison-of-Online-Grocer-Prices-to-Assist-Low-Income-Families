@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, flash, abort
 import pymysql
 from dynaconf import Dynaconf
 import flask_login
+from scraper import scrape
 #<--- Imports --->#
 
 
@@ -32,10 +33,9 @@ class User:
     is_anonymous = False
     is_active = True
 
-    def __init__(self, user_id, username, password, zipcode):
+    def __init__(self, user_id, username, zipcode):
         self.id = user_id
         self.username = username
-        self.password = password
         self.zip = zipcode
 
     def get_id(self):
@@ -72,7 +72,7 @@ def load_user(user_id):
     conn.close()
 
     if result is not None:
-        return User(result["id"], result["username"], result["password"], result["zipcode"])
+        return User(result["id"], result["username"], result["zipcode"])
     
 
 #<--- Routes --->#
@@ -83,12 +83,125 @@ def index():
 
 
 ## Sign Up Page
-@app.route("/register")
+@app.route("/register", methods=["POST", "GET"])
 def signup():
+    if flask_login.current_user.is_authenticated:
+        return redirect("/products")
+    
+    if request.method =="POST":
+        username = request.form["username"].strip().replace(" ", "")
+        zipcode = request.form["zipcode"].strip().replace(" ", "")
+        password = request.form["password"].strip().replace(" ", "")
+        confpass = request.form["confirm_password"].strip().replace(" ", "")
+
+        conn = conn_db()
+
+        cursor = conn.cursor()
+
+        if len(username) >20:
+            flash("Username must be 20 characters or less.")
+
+        else:
+            if len(password) < 8:
+                flash("Password must be 8 characters or longer.")
+            
+            else:
+                if password != confpass:
+                    flash("Passwords do not match.")
+                
+                else:
+                    try:
+                        cursor.execute(f"""
+                            INSERT INTO `Users`
+                                (`username`, `password`, `zipcode`)
+                            VALUES
+                                ('{username}', '{password}', '{zipcode}');
+                        """)
+                    
+                    except pymysql.err.IntegrityError:
+                        flash("Username is already in use.")
+                    
+                    else:
+                        return redirect("/login")
+                    
+                    finally:
+                        ##Close Connections
+                        cursor.close()
+                        conn.close()
+
     return render_template("signup.html.jinja")
 
 
 ## Log In Page
-@app.route("/login")
+@app.route("/login", methods=["POST", "GET"])
 def login():
+    if flask_login.current_user.is_authenticated:
+        return redirect("/products")
+    
+    if request.method == "POST":
+        username = request.form["userVer"].strip().replace(" ", "")
+        password = request.form["passVer"].strip().replace(" ", "")
+
+        conn = conn_db()
+
+        cursor = conn.cursor()
+
+        cursor.execute(f"SELECT * FROM `Users` WHERE `username` = '{username}';")
+
+        result = cursor.fetchone()
+
+        ##Close Connections
+        cursor.close()
+        conn.close()
+
+        if result is None:
+            flash("Your username and/or password is incorrect.")
+        
+        elif password != result["password"]:
+            flash("Your username and/or password is incorrect.")
+
+        else:
+            user = User(result["id"], result["username"], result["zipcode"])
+
+            flask_login.login_user(user)
+
+            return redirect("/products")
+        
     return render_template("login.html.jinja")
+
+
+## Popular Products Page
+@app.route("/products")
+def popular_products():
+    return render_template("popular_products.html.jinja")
+
+
+## Comparison Page
+@app.route("/compare")
+def comparison():
+    return render_template("comparison.html.jinja")
+
+
+## Leftovers Page
+@app.route("/leftovers")
+@flask_login.login_required
+def leftovers():
+    return render_template("saved_products.html.jinja")
+
+## Guide Page
+@app.route("/guide")
+def guide():
+   return render_template("guide.html.jinja")
+
+## Account Page
+@app.route("/settings")
+@flask_login.login_required
+def account():
+    return render_template("account.html.jinja")
+
+
+## Log Out
+@app.route("/logout")
+def logout():
+    flask_login.logout_user()
+    return redirect("/")
