@@ -6,8 +6,6 @@
     
 }
 
-
-
 body {
     background-color: #FDF2E4;
 }
@@ -168,7 +166,6 @@ body {
     color: white;
 }
 
-
 .saved-card {
     height: 150px;
 }
@@ -306,6 +303,36 @@ body {
     color: black;
     border: none;
 }
+
+#save-clear {
+    display: flex;
+}
+
+#save-clear .clear-label {
+    display: none;
+    white-space: nowrap;
+}
+
+#save-clear .clear-icon {
+    display: inline;
+}
+
+#save-clear:hover {
+    background-color: #ffffff;
+    width: 100px;
+    transition: width 5s;
+}
+
+#save-clear:hover .clear-label {
+   display: inline;
+   color: #cb444b;
+   float: inline-start;
+}
+
+#save-clear:hover .clear-icon {
+    display: inline;
+    float: inline-end;
+    color: #cb444b;
 
 .active-link {
     color: black; 
