@@ -17,12 +17,15 @@
         </svg> Back to Products
     </a>
     
-    <button type="button" id="save-clear" class="float-end m-2 btn btn-danger" data-bs-toggle="modal" data-bs-target="#clearItemsModal">
-        <span class="clear-label">Clear All</span>
-        <span class="clear-icon">
-        <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22"><path d="M1.5 1.5l12 12m-12 0l12-12" stroke="currentColor"></path></svg>
-        </span>
-    </button>
+    <form class="float-end m-2 btn btn-danger">
+        <button type="button" id="save-clear" data-bs-toggle="modal" data-bs-target="#clearItemsModal">
+            <span class="clear-label">Clear All</span>
+            <span class="clear-icon">
+            <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22"><path d="M1.5 1.5l12 12m-12 0l12-12" stroke="currentColor"></path></svg>
+            </span>
+        </button>
+    </form>
+
     <div class="modal fade" id="clearItemsModal" tabindex="-1" aria-labelledby="clearItemsModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -66,9 +69,11 @@
                 </div>
                 <div class="col-md-8">
                 <div class="card-body">
+                <form>
                     <button type="button" class="float-end btn btn-danger">
                         <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="19" height="19"><path d="M4.5 3V1.5a1 1 0 011-1h4a1 1 0 011 1V3M0 3.5h15m-13.5 0v10a1 1 0 001 1h10a1 1 0 001-1v-10M7.5 7v5m-3-3v3m6-3v3" stroke="currentColor"></path></svg>
                     </button>
+                </form>
                     <h3 class="card-title">Item Name</h3>
                 
                     <h4 class="card-title">Store</h4>

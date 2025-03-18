@@ -173,20 +173,59 @@ def login():
 ## Popular Products Page
 @app.route("/products")
 def popular_products():
-    return render_template("popular_products.html.jinja")
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    cursor.execute(f"SELECT * FROM `Products`;  ")
+
+    results = cursor.fetchall()
+
+    return render_template("popular_products.html.jinja", products=results)
 
 
 ## Comparison Page
-@app.route("/compare")
-def comparison():
-    return render_template("comparison.html.jinja")
+@app.route("/compare/<products_id>")
+def comparison(products_id):
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    cursor.execute(f"SELECT * FROM `Products` WHERE `id` = {products_id};  ")
+
+    result = cursor.fetchone()
+
+    cursor.execute(f"SELECT * FROM `CompanyList`; ")
+
+    comp_results = cursor.fetchall()
+
+    return render_template("comparison.html.jinja", products=result, comp_products = comp_results)
 
 
 ## Leftovers Page
 @app.route("/leftovers")
 @flask_login.login_required
 def leftovers():
-    return render_template("saved_products.html.jinja")
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    user_id = flask_login.current_user.id
+
+    cursor.execute(f"SELECT * FROM `Cart` WHERE `user_id` = {user_id};")
+
+    results = cursor.fetchall()
+
+    return render_template("saved_products.html.jinja", products=results)
+
+## Add Items to Leftovers
+@app.route("/leftovers/save")
+@flask_login.login_required
+def save ():
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    user_id = flask_login.current_user.id
+
+    
+    return redirect("/leftovers")
 
 ## Guide Page
 @app.route("/guide")
