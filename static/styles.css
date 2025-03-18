@@ -3,7 +3,6 @@
         margin-bottom: 10px;
         width: 100%;
     }
-    
 }
 
 body {
@@ -360,4 +359,8 @@ div #guide-block {
     overflow: auto;
     scrollbar-color: red;
     scrollbar-width: thin;
+}
+
+.social-icon:hover {
+    color: black;
 }
