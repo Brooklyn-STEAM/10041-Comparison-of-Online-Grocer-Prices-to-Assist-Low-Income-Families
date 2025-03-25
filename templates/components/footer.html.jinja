@@ -33,7 +33,7 @@
 
     {%if current_user.is_authenticated%}
     <div class="d-inline-block mt-1 col text-White">
-        <p class="fs-5 fw-bold mb-0 text-White pb-2 border-bottom border-white">My Account</p>
+        <p class="fs-5 fw-bold mb-0 text-White pb-2 border-bottom border-white">Account</p>
         <a class="footer-link d-inline-block mx-1 {% if request.path == '/settings' %}active-link{%else%}text-White{%endif%} link-underline link-underline-opacity-0 fs-5" href="/settings">
         <svg class="d-inline-block" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M8.146 9.146l-.353.354.707.707.354-.353-.708-.708zM10.5 7.5l.354.354.353-.354-.353-.354-.354.354zM8.854 5.146L8.5 4.793l-.707.707.353.354.708-.708zm0 4.708l2-2-.708-.708-2 2 .708.708zm2-2.708l-2-2-.708.708 2 2 .708-.708zM10.5 7H4v1h6.5V7z" fill="currentColor"></path></svg> 
         Settings</a>
