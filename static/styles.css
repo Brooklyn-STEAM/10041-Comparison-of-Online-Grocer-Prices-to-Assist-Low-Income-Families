@@ -150,10 +150,6 @@ body {
     color: white;
 }
 
-#compare-heading-card {
-    height: 150px;
-}
-
 .back-products {
     background-color: #77A780;
     border-color: #5C8463;
@@ -164,7 +160,6 @@ body {
     border-color: #77A780;
     color: white;
 }
-
 
 .saved-card {
     height: 150px;
@@ -304,6 +299,37 @@ body {
     border: none;
 }
 
+#save-clear {
+    display: flex;
+}
+
+#save-clear .clear-label {
+    display: none;
+    white-space: nowrap;
+}
+
+#save-clear .clear-icon {
+    display: inline;
+}
+
+#save-clear:hover {
+    background-color: #ffffff;
+    width: 100px;
+    transition: width 5s;
+}
+
+#save-clear:hover .clear-label {
+   display: inline;
+   color: #cb444b;
+   float: inline-start;
+}
+
+#save-clear:hover .clear-icon {
+    display: inline;
+    float: inline-end;
+    color: #cb444b;
+}
+
 .active-link {
     color: black; 
 }
@@ -334,4 +360,14 @@ div #guide-block {
 
 .social-icon:hover {
     color: black;
+}
+
+#product-searchs {
+    height: 340px;
+}
+
+#product-rule {
+    border-color:#486D4E;
+    border-width: 5px;
+    opacity: 1.0;
 }

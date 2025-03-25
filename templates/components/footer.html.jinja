@@ -56,5 +56,42 @@
         {%endif%}
     </div>
 
+    <div class="d-inline-block mt-1 col">
+    <p class="fs-5 fw-bold mb-0 text-White pb-2 border-bottom border-white">Where to Next?</p>
+        <a class="footer-link d-inline-block mx-1 {% if request.path == '/' %}active-link{%else%}text-White{%endif%} link-underline link-underline-opacity-0 fs-5" href="/">
+        <svg class="d-inline-block" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M8.146 9.146l-.353.354.707.707.354-.353-.708-.708zM10.5 7.5l.354.354.353-.354-.353-.354-.354.354zM8.854 5.146L8.5 4.793l-.707.707.353.354.708-.708zm0 4.708l2-2-.708-.708-2 2 .708.708zm2-2.708l-2-2-.708.708 2 2 .708-.708zM10.5 7H4v1h6.5V7z" fill="currentColor"></path></svg> 
+        Home</a>
+        <a class="footer-link d-block mx-1 {% if request.path == '/products' %}active-link{%else%}text-White{%endif%} link-underline link-underline-opacity-0 fs-5" href="/products">
+        <svg class="d-inline-block" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M8.146 9.146l-.353.354.707.707.354-.353-.708-.708zM10.5 7.5l.354.354.353-.354-.353-.354-.354.354zM8.854 5.146L8.5 4.793l-.707.707.353.354.708-.708zm0 4.708l2-2-.708-.708-2 2 .708.708zm2-2.708l-2-2-.708.708 2 2 .708-.708zM10.5 7H4v1h6.5V7z" fill="currentColor"></path></svg>
+        Browse</a>
+        <a class="footer-link d-block mx-1 {% if request.path == '/guide' %}active-link{%else%}text-White{%endif%} link-underline link-underline-opacity-0 fs-5" href="/guide">
+        <svg class="d-inline-block" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M8.146 9.146l-.353.354.707.707.354-.353-.708-.708zM10.5 7.5l.354.354.353-.354-.353-.354-.354.354zM8.854 5.146L8.5 4.793l-.707.707.353.354.708-.708zm0 4.708l2-2-.708-.708-2 2 .708.708zm2-2.708l-2-2-.708.708 2 2 .708-.708zM10.5 7H4v1h6.5V7z" fill="currentColor"></path></svg>
+        Guide</a>
+    </div>
+
+    <div class="d-inline-block mt-1 col text-White">
+     <p class="fs-5 fw-bold mb-0 text-White pb-2 border-bottom border-white">Contact Us!</p>
+     <p class="mb-0 mx-1 fs-5">
+     <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15"><path d="M4.72.5H2.5a2 2 0 00-2 2v2c0 5.523 4.477 10 10 10h2a2 2 0 002-2v-1.382a1 1 0 00-.553-.894l-2.416-1.208a1 1 0 00-1.396.578l-.297.893a1.21 1.21 0 01-1.385.804A6.047 6.047 0 013.71 6.547a1.21 1.21 0 01.804-1.385l1.108-.37a1 1 0 00.654-1.19L5.69 1.257A1 1 0 004.72.5z" stroke="currentColor"></path></svg>
+     123-456-7890</p>
+
+    <p class="mb-0 mx-1">
+     <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15"><path d="M.5 4.5l7 4 7-4m-13-3h12a1 1 0 011 1v10a1 1 0 01-1 1h-12a1 1 0 01-1-1v-10a1 1 0 011-1z" stroke="currentColor"></path></svg>
+     cheapcarts@cheapcarts.com</p>
+    
+    </div>
+
+    {%if current_user.is_authenticated%}
+    <div class="d-inline-block mt-1 col text-White">
+        <p class="fs-5 fw-bold mb-0 text-White pb-2 border-bottom border-white">Account</p>
+        <a class="footer-link d-inline-block mx-1 {% if request.path == '/settings' %}active-link{%else%}text-White{%endif%} link-underline link-underline-opacity-0 fs-5" href="/settings">
+        <svg class="d-inline-block" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M8.146 9.146l-.353.354.707.707.354-.353-.708-.708zM10.5 7.5l.354.354.353-.354-.353-.354-.354.354zM8.854 5.146L8.5 4.793l-.707.707.353.354.708-.708zm0 4.708l2-2-.708-.708-2 2 .708.708zm2-2.708l-2-2-.708.708 2 2 .708-.708zM10.5 7H4v1h6.5V7z" fill="currentColor"></path></svg> 
+        Settings</a>
+
+        <a class="footer-link d-block mx-1 {% if request.path == '/logout' %}active-link{%else%}text-White{%endif%} link-underline link-underline-opacity-0 fs-5" href="/logout">
+        <svg class="d-inline-block" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M8.146 9.146l-.353.354.707.707.354-.353-.708-.708zM10.5 7.5l.354.354.353-.354-.353-.354-.354.354zM8.854 5.146L8.5 4.793l-.707.707.353.354.708-.708zm0 4.708l2-2-.708-.708-2 2 .708.708zm2-2.708l-2-2-.708.708 2 2 .708-.708zM10.5 7H4v1h6.5V7z" fill="currentColor"></path></svg> 
+        Logout</a>
+    </div>
+    {%endif%}
 </div>
 </footer>
