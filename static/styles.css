@@ -151,10 +151,6 @@ body {
     color: white;
 }
 
-#compare-heading-card {
-    height: 150px;
-}
-
 .back-products {
     background-color: #77A780;
     border-color: #5C8463;
@@ -333,6 +329,7 @@ body {
     display: inline;
     float: inline-end;
     color: #cb444b;
+}
 
 .active-link {
     color: black; 
@@ -360,4 +357,14 @@ div #guide-block {
     overflow: auto;
     scrollbar-color: red;
     scrollbar-width: thin;
+}
+
+#product-searchs {
+    height: 340px;
+}
+
+#product-rule {
+    border-color:#486D4E;
+    border-width: 5px;
+    opacity: 1.0;
 }
