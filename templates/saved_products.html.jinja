@@ -17,43 +17,89 @@
         </svg> Back to Products
     </a>
     
+   
+    <button class="float-end m-2 btn btn-danger" type="button" id="save-clear" data-bs-toggle="modal" data-bs-target="#clearItemsModal">
+        <span class="clear-label">Clear All</span>
+        <span class="clear-icon">
+            <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22"><path d="M1.5 1.5l12 12m-12 0l12-12" stroke="currentColor"></path></svg>
+        </span>
+    </button>
+   
+
+    <div class="modal fade" id="clearItemsModal" tabindex="-1" aria-labelledby="clearItemsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-danger" id="deleteAccountModalLabel">Clear Items Confirmation</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to <b>clear all</b> of the items you have saved?</p> 
+                </div>
+                <div class="modal-footer">
+                <form action="/leftovers/clear_all" method="post">
+                    <button type="button" class="btn btn-secondary d-inline float-start me-4" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                    <button type="submit" id="delete-btn" class="btn btn-danger">Clear All Items</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <header class="container" id="saved-header">
 
     <h1 class="text-center">Leftovers</h1>
     <h2 class="text-center">View your saved products here!</h2>
 
-    <form id="saved-search" class="w-100 d-flex my-3 mb-4" role="search">
-        <input class="text-box form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <form id="saved-search" action="/leftovers" class="w-100 d-flex my-3 mb-4" role="search">
+        <input class="text-box form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search" value="{{request.args.get('query', '')}}">
         <button id="product-search" class="btn secondaryColor" type="submit">Search</button>
     </form>
-
     </header>
 
     <div id="saved-rule"></div>
     <main class="container overflow-auto" id="saved-main">
 
     <!--Add for loop when ready -->
-    <div class="saved-card card mb-3 mt-3 w-100">
-        <a href="#" class="text-black link-underline link-underline-opacity-0">
-            <div class="row g-0">
-                <div class="col-md-4">
-                <img src="..." class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                <div class="card-body">
-                    <h3 class="card-title">Item Name</h3>
-                    <h4 class="card-title">Store</h4>
-                    <h4 class="card-title text-end my-auto">Price</h4>
-                </div>
-                </div>
+    <!-- Add if statement to display message for no items being saved -->
+
+    {%if products |length > 0%}
+    {%for item in products%}
+    <a href="/compare/{{item['id']}}" class="saved-card card text-black link-underline link-underline-opacity-0 flex-row">
+        <div class="col-md-3">
+            <img src="{{item['item_image']}}" class="mh-100 rounded-start" alt="Image of {{item['item_name']}}">
+        </div>
+        <div class="col-md-9">
+            <div class="card-body ps-1">
+                <h3 class="card-title">{{item['item_name']}}</h3>
+                <h4 class="card-text">${{item['item_price']}}</h4>
+
+                <form class="float-end" action="/leftovers/{{item['id']}}/unsave" method="post">
+                    <button type="submit" class="btn btn-danger">
+                        <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="19" height="19"><path d="M4.5 3V1.5a1 1 0 011-1h4a1 1 0 011 1V3M0 3.5h15m-13.5 0v10a1 1 0 001 1h10a1 1 0 001-1v-10M7.5 7v5m-3-3v3m6-3v3" stroke="currentColor"></path></svg>
+                    </button>
+                </form>
             </div>
+        </div>
+    </a>
+    {%endfor%}
+    {%elif request.args.get('query') != None%}
+    <h1 class="text-center">'{{request.args.get('query')}}' Not Found</h1>
+
+    {%else%}
+    <div class="text-center mt-4">
+        <h1 class="text-center mt-3">You Have No Items Saved</h1>
+        <a href="/products" class="back-products fs-3 btn btn-lg mx-auto mt-3 text-black">
+             Go to Products
         </a>
     </div>
+    {%endif%}
+
     <!--End for loop here -->
 
     </main>
 
-
+    {% include "components/footer.html.jinja"%}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>

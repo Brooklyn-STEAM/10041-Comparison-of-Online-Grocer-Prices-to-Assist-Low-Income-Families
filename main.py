@@ -171,25 +171,146 @@ def login():
 
 ## Popular Products Page
 @app.route("/products")
+@flask_login.login_required
 def popular_products():
-    return render_template("popular_products.html.jinja")
+    conn = conn_db()
+    cursor = conn.cursor()
+    query = request.args.get('query')
+
+    user_id = flask_login.current_user.id
+
+    left_join = f"LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id} "
+
+    search_results = []
+
+    if query:
+        cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE '%{query}%';")
+    
+        search_results = cursor.fetchall()
+
+    cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_price` < 10; ")
+
+    results_ten = cursor.fetchall()
+
+    cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_price` < 5; ")
+
+    results_five = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return render_template("popular_products.html.jinja", search_products=search_results, products_ten = results_ten, products_five = results_five)
 
 
 ## Comparison Page
-@app.route("/compare/<item_name>")
-def comparison(item_name):
-    results = None
-    print(results)
-    # results_fb = results[0]
-    # results_amazon = results[1]
-    return render_template("comparison.html.jinja")###, fb = results_fb, amazon = results_amazon)###
+@app.route("/compare/<products_id>")
+def comparison(products_id):
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    user_id = flask_login.current_user.id
+
+    cursor.execute(f"""
+                    SELECT * FROM `Products` 
+                    LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id} 
+                    WHERE `Products`.`id` = {products_id}; 
+                """)
+
+    result = cursor.fetchone()
+
+    cursor.execute(f"SELECT * FROM `CompanyList`; ")
+
+    comp_results = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return render_template("comparison.html.jinja", products=result, comp_products = comp_results)
 
 
 ## Leftovers Page
 @app.route("/leftovers")
 @flask_login.login_required
 def leftovers():
-    return render_template("saved_products.html.jinja")
+    conn = conn_db()
+    cursor = conn.cursor()
+    query = request.args.get('query')
+
+    user_id = flask_login.current_user.id
+
+    if query is None:
+        cursor.execute(f"""SELECT Products.id, item_name, item_image, item_price 
+                    FROM Cart 
+                    JOIN Products ON product_id = Products.id 
+                    WHERE user_id = {user_id}
+                    ;""")
+    else: 
+        cursor.execute(f"""SELECT Products.id, item_name, item_image, item_price 
+                    FROM Cart 
+                    JOIN Products ON product_id = Products.id 
+                    WHERE item_name LIKE '%{query}%'
+                    ;""")
+ 
+    results = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return render_template("saved_products.html.jinja", products=results)
+
+## Add Items to Leftovers
+@app.route("/leftovers/<products_id>/save", methods=["POST"])
+@flask_login.login_required
+def save(products_id):
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    user_id = flask_login.current_user.id
+
+    cursor.execute(f"""
+                    INSERT IGNORE INTO `Cart` 
+                   (`user_id`, `product_id`)
+                   VALUES
+                   ({user_id}, {products_id});
+                """)
+    
+    cursor.close()
+    conn.close()
+    
+    return redirect("/leftovers")
+
+## Remove Items from Leftovers
+@app.route("/leftovers/<products_id>/unsave", methods=["POST"])
+@flask_login.login_required
+def unsave(products_id):
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    user_id = flask_login.current_user.id
+
+    cursor.execute(f"DELETE FROM `Cart` WHERE `product_id` = {products_id} AND `user_id` = {user_id};")
+
+    cursor.close()
+    conn.close()
+
+    return redirect("/products")
+
+## Clear all from Leftovers - fix later
+@app.route("/leftovers/clear_all", methods=["POST"])
+@flask_login.login_required
+def clear_all():
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    user_id = flask_login.current_user.id
+
+    cursor.execute(f"DELETE FROM `Cart` WHERE `user_id` = {user_id}")
+
+    cursor.close()
+    conn.close()
+
+    return redirect("/leftovers")
+
 
 ## Guide Page
 @app.route("/guide")
