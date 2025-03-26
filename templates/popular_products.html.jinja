@@ -27,7 +27,6 @@
       <hr class="product-rule">
     {%elif search_products | length > 0%}
       <h2>Search Results for '{{request.args.get('query')}}'</h2>
-
       {%if search_products | length == 1%}
         <h4 class="text-secondary">{{search_products | length}} Result Found</h4>
       {%else%}
