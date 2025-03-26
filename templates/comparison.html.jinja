@@ -16,7 +16,7 @@
             <path d="M1.5 7.5l4-4m-4 4l4 4m-4-4H14" stroke="currentColor"></path>
         </svg> Back to Products</a>
 
-    <main class="container text-center mx-5 my-4">
+    <main class="container mx-auto my-4">
         <section class="row">
             <div class="card mb-3 mx-auto w-100">
                 <div class="card-body row">
@@ -39,25 +39,23 @@
                         {%endif%}
                     </div>
                     <div class="col">
-                        <img src="{{products['item_image']}}" width="150px" class="img-fluid rounded-start" alt="Image of {{products['item_name']}}">
+                        <img src="{{products['item_image']}}" width="150px" class="mh-100 float-end img-fluid rounded-start" alt="Image of {{products['item_name']}}">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="container">
+        <section class="mx-auto">
             <div class="row">
                 {%for company in comp_products%}
                     <div class="col p-0">
-                        <div class="compare-card card text-center p-0 mb-2">
+                        <div class="mx-auto compare-card card text-center p-0 mb-2">
                             <a href="https://{{company['root_link']}}" class="text-black link-underline link-underline-opacity-0">
                                 <h3 class="card-title text-center mt-2">{{company['company_name']}}</h3>
                                 <div class="card-body">
                                     <img src="{{company['root_link']}}" class="card-img-top" alt="Image of Item Name">
-                                </div>
-                                <div class="card-body text-center">
-                                    <p class="fs-3 mt-5">Price</p>
-                                    <p class="fs-4">-On- Sale</p>
+                                    <p class="fs-3 mt-5 text-center">Price</p>
+                                    <p class="fs-4 text-center">-On- Sale</p>
                                 </div>
                             </a>
                             </div>
