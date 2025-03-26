@@ -163,6 +163,7 @@ body {
 
 .saved-card {
     height: 150px;
+    
 }
 
 .saved-card:hover {
@@ -366,8 +367,19 @@ div #guide-block {
     height: 340px;
 }
 
-#product-rule {
+.product-rule {
     border-color:#486D4E;
     border-width: 5px;
     opacity: 1.0;
+}
+
+#search-result {
+    width: 800px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #9bd4a255 inset !important;
 }
