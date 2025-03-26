@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, redirect, flash, abort
 import pymysql
 from dynaconf import Dynaconf
 import flask_login
-from scraper import scrape
 #<--- Imports --->#
 
 
@@ -177,9 +176,13 @@ def popular_products():
 
 
 ## Comparison Page
-@app.route("/compare")
-def comparison():
-    return render_template("comparison.html.jinja")
+@app.route("/compare/<item_name>")
+def comparison(item_name):
+    results = None
+    print(results)
+    # results_fb = results[0]
+    # results_amazon = results[1]
+    return render_template("comparison.html.jinja")###, fb = results_fb, amazon = results_amazon)###
 
 
 ## Leftovers Page
