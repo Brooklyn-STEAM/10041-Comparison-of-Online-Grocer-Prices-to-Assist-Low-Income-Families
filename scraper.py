@@ -17,7 +17,7 @@ ua = UserAgent()
 options = webdriver.ChromeOptions()
 options.add_argument(f"user-agent={ua.random}")
 driver = uc.Chrome(options=options)
-search = "eggs"
+search = "Eggs"
 conf = Dynaconf(
     settings_file = ["settings.toml"]
 )
@@ -83,17 +83,23 @@ for index in range(len(names)):
     foodbazaar.update({str(names[index]):str(prices[index])})
 
 
-# Empty File
-text = open("foodbazaar.txt", "w").close()
+# Calculations
+items = []
+for item in foodbazaar:
+    temp = float(foodbazaar.get(item)[1:]) * 100
+    items.append(temp)
+items.sort()
 
+choice = "$" + str(items[0]/100)
+for item in foodbazaar:
+    if foodbazaar.get(item) == choice:
+        name = str(item)
+        price = str(choice)
+        break
 
-# Writes to File
-with open("foodbazaar.txt", "a") as text:
-    for item in foodbazaar:
-        if item == list(foodbazaar)[-1]:
-            text.write(item + ": " + foodbazaar.get(item))
-        else:
-            text.write(item + ": " + foodbazaar.get(item) + "\n")
+foodbazaar = []
+foodbazaar.append(name)
+foodbazaar.append(price)
 
 
 
@@ -146,28 +152,105 @@ for index in range(len(names)):
     walmart.update({str(names[index]):str(prices[index])})
 
 
-# Empty File
-text = open("walmart.txt", "w").close()
+# Calculations
+items = []
+for item in walmart:
+    temp = float(walmart.get(item)[1:]) * 100
+    items.append(temp)
+items.sort()
+
+choice = "$" + str(items[0]/100)
+for item in walmart:
+    if walmart.get(item) == choice:
+        name = str(item)
+        price = str(choice)
+        break
+
+walmart = []
+walmart.append(name)
+walmart.append(price)
 
 
-# Writes to File
-with open("walmart.txt", "a") as text:
-    for item in walmart:
-        if item == list(walmart)[-1]:
-            text.write(item + ": " + walmart.get(item))
-        else:
-            text.write(item + ": " + walmart.get(item) + "\n")
+
+
+
+## Aldi
+driver.get(f"https://new.aldi.us/results?q={search}")
+
+
+# Filter Tags
+time.sleep(3)
+
+soup = BeautifulSoup(driver.page_source, 'lxml')
+
+unwanted_tags = ["style", "script", "meta", "option", "form", "link", "head", "button"]
+
+for tag in unwanted_tags:
+    [s.extract() for s in soup(tag)]
+
+
+# List of Names + Prices
+temp = soup.find_all("div", class_="product-tile__name")
+i = 0
+names = []
+for name in temp:
+    names.append(re.sub("<.+?>", "", str(name)))
+    i += 1
+    if i == 5:
+        break
+
+temp = soup.find_all("span", class_="base-price__regular")
+i = 0
+prices = []
+for price in temp:
+    prices.append(re.sub("<.+?>", "", str(price)))
+    i += 1
+    if i == 5:
+        break
+
+
+# # Aggregates Name and Price
+aldi = dict()
+
+index = 0
+for index in range(len(names)):
+    aldi.update({str(names[index]):str(prices[index])})
+
+
+# Calculations
+items = []
+for item in aldi:
+    temp = float(aldi.get(item)[1:]) * 100
+    items.append(temp)
+items.sort()
+
+choice = "$" + str(items[0]/100)
+for item in aldi:
+    if aldi.get(item) == choice:
+        name = str(item)
+        price = str(choice)
+        break
+
+aldi = []
+aldi.append(name)
+aldi.append(price)
+
 
 # driver.quit()
 
 conn = conn_db()
-
 cursor = conn.cursor()
 
-pass
+cursor.execute(f"""
+            INSERT INTO `Products`
+               (`item_name`, `item_image`)
+            VALUES
+               ('{search}', 'temp')
+            ON DUPLICATE KEY UPDATE
+               `item_name` = '{search}'
+""")
 
 cursor.close()
-
 conn.close()
 
 input()
