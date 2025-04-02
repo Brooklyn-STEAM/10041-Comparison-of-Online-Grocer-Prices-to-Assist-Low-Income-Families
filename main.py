@@ -295,7 +295,7 @@ def unsave(products_id):
 
     return redirect("/products")
 
-## Clear all from Leftovers - fix later
+## Clear all from Leftovers
 @app.route("/leftovers/clear_all", methods=["POST"])
 @flask_login.login_required
 def clear_all():
@@ -304,7 +304,7 @@ def clear_all():
 
     user_id = flask_login.current_user.id
 
-    cursor.execute(f"DELETE FROM `Cart` WHERE `user_id` = {user_id}")
+    cursor.execute(f"DELETE FROM `Cart` WHERE `user_id` = {user_id};")
 
     cursor.close()
     conn.close()
@@ -321,7 +321,106 @@ def guide():
 @app.route("/settings")
 @flask_login.login_required
 def account():
-    return render_template("account.html.jinja")
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    user_id = flask_login.current_user.id
+
+    cursor.execute(f"""
+                    SELECT * FROM `Users` WHERE `id` = {user_id};
+                    """)
+    
+    results = cursor.fetchone()
+    
+    cursor.close()
+    conn.close()
+    return render_template("account.html.jinja", user=results)
+
+## Change Password
+@app.route("/settings/change_password", methods=["POST", "GET"])
+@flask_login.login_required
+def change_password():
+    new_password = request.form["newPasswordInput"].strip().replace(" ", "")
+    current_password = request.form["currentPasswordInput"].strip().replace(" ", "")
+    confirm_password = request.form["confirmNewPasswordInput"].strip().replace(" ", "")
+
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    user_id = flask_login.current_user.id
+    
+    cursor.execute(f"SELECT `password` FROM `Users` WHERE `id` = {user_id}")
+
+    result = cursor.fetchone()
+
+    if current_password != result["password"]:
+        flash("Incorrect Password")
+    elif new_password == current_password:
+        flash("New Password Cannot Match Old Password")
+    elif new_password != confirm_password:
+        flash("Your new passwords do not match")
+    elif len(new_password) < 8:
+        flash("New Password is Too Short, must be longer than 8 characters")
+    else:
+        cursor.execute(f"""UPDATE `Users` 
+            SET `password` = '{new_password}'
+            WHERE `id` = {user_id}; """)
+
+        cursor.close()
+        conn.close()
+
+        flask_login.logout_user()
+
+        return redirect("/login")
+    
+    return redirect('/settings')
+
+## Change Zip Code
+@app.route("/settings/change_zipcode", methods=["POST"])
+@flask_login.login_required
+def change_zipcode():
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    user_id = flask_login.current_user.id
+
+    new_zipcode = request.form["newZipCode"].strip().replace(" ", "")
+
+    cursor.execute(f"SELECT `zipcode` FROM `Users` WHERE `id` = {user_id}")
+
+    result = cursor.fetchone()
+
+    if new_zipcode.isalpha() == True:
+        flash("Zip Code can only be numbers")
+    elif new_zipcode == result["zipcode"]:
+        flash("New Zip Code cannot match existing zip code")
+    elif len(new_zipcode) < 5 or len(new_zipcode) > 5:
+        flash("Zip Code needs 5 numbers")
+    else:
+        cursor.execute(f"""UPDATE `Users` 
+                SET `zipcode` = '{new_zipcode}'
+                WHERE `id` = {user_id}; """)
+    
+        cursor.close()
+        conn.close()
+
+    return redirect("/settings")
+
+## Delete Account
+@app.route("/settings/delete_account", methods=["POST"])
+@flask_login.login_required
+def delete_account():
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    user_id = flask_login.current_user.id
+
+    cursor.execute(f"DELETE FROM `Users` WHERE `id` = {user_id}; ")
+
+    cursor.close()
+    conn.close()
+
+    return redirect("/")
 
 
 ## Log Out

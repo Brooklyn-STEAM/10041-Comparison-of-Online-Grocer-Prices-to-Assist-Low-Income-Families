@@ -219,19 +219,6 @@ body {
     box-shadow: 0 0 0 .25rem rgba(168, 237, 181,.25);
 }
 
-#newUsernameInput:focus + #userText {
-    visibility: visible;
-    display: inline;
-}
-
-#userText {
-    visibility: hidden;
-    display: none;
-    border: none;
-    background: none;
-    margin-bottom: 5px;
-}
-
 .save-btn .save-label {
     display: none;
 }
@@ -383,3 +370,17 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px #9bd4a255 inset !important;
 }
+
+#newZipCode:focus + #newZipNote {
+    visibility: visible;
+    display: inline;
+}
+
+#newZipNote {
+    visibility: hidden;
+    display: none;
+    border: none;
+    background: none;
+    margin-bottom: 5px;
+}
+
