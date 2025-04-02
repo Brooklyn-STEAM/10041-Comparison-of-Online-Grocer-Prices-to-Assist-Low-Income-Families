@@ -188,18 +188,22 @@ def popular_products():
     
         search_results = cursor.fetchall()
 
-    cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_price` < 10; ")
+    cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'a&' OR `item_name` LIKE 'b%' OR `item_name` LIKE 'c%' OR `item_name` LIKE 'd%' OR `item_name` LIKE 'e%' OR `item_name` LIKE 'g%' OR `item_name` LIKE 'h%'; ")
 
-    results_ten = cursor.fetchall()
+    results_ah = cursor.fetchall()
 
-    cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_price` < 5; ")
+    cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'i%' OR `item_name` LIKE 'j%' OR `item_name` LIKE 'k%' OR `item_name` LIKE 'l%' OR `item_name` LIKE 'm%' OR `item_name` LIKE 'n%' OR `item_name` LIKE 'o%' OR `item_name` LIKE 'p%'; ")
 
-    results_five = cursor.fetchall()
+    results_ip = cursor.fetchall()
+
+    cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'q%' OR `item_name` LIKE 'r%' OR `item_name` LIKE 's%' OR `item_name` LIKE 't%' OR `item_name` LIKE 'u%' OR `item_name` LIKE 'v%' OR `item_name` LIKE 'w%' OR `item_name` LIKE 'x%' OR `item_name` LIKE 'y%' OR `item_name` LIKE 'z%' ; ")
+
+    results_qz = cursor.fetchall()
 
     cursor.close()
     conn.close()
 
-    return render_template("popular_products.html.jinja", search_products=search_results, products_ten = results_ten, products_five = results_five)
+    return render_template("popular_products.html.jinja", search_products=search_results, products_ip = results_ip, products_ah = results_ah, products_qz = results_qz)
 
 
 ## Comparison Page
@@ -239,13 +243,13 @@ def leftovers():
     user_id = flask_login.current_user.id
 
     if query is None:
-        cursor.execute(f"""SELECT Products.id, item_name, item_image, item_price 
+        cursor.execute(f"""SELECT Products.id, item_name, item_image
                     FROM Cart 
                     JOIN Products ON product_id = Products.id 
                     WHERE user_id = {user_id}
                     ;""")
     else: 
-        cursor.execute(f"""SELECT Products.id, item_name, item_image, item_price 
+        cursor.execute(f"""SELECT Products.id, item_name, item_image 
                     FROM Cart 
                     JOIN Products ON product_id = Products.id 
                     WHERE item_name LIKE '%{query}%'
