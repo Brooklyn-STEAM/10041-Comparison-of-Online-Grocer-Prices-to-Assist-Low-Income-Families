@@ -46,19 +46,19 @@
         </div>
     </div>
 
-    <header class="container" id="saved-header">
+    <main class="container overflow-auto" id="saved-main">
 
-    <h1 class="text-center">Leftovers</h1>
-    <h2 class="text-center">View your saved products here!</h2>
+    <header id="saved-header">
+        <h1 class="text-center">Leftovers</h1>
+        <h2 class="text-center">View your saved products here!</h2>
 
-    <form id="saved-search" action="/leftovers" class="w-100 d-flex my-3 mb-4" role="search">
-        <input class="text-box form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search" value="{{request.args.get('query', '')}}">
-        <button id="product-search" class="btn secondaryColor" type="submit">Search</button>
-    </form>
+        <form id="saved-search" action="/leftovers" class="d-flex my-3 mb-4" role="search">
+            <input class="text-box form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search" value="{{request.args.get('query', '')}}">
+            <button id="product-search" class="btn secondaryColor" type="submit">Search</button>
+        </form>
     </header>
 
     <div id="saved-rule"></div>
-    <main class="container overflow-auto" id="saved-main">
 
     <!--Add for loop when ready -->
     <!-- Add if statement to display message for no items being saved -->
@@ -67,7 +67,7 @@
     {%for item in products%}
     <a href="/compare/{{item['id']}}" class="saved-card card text-black link-underline link-underline-opacity-0 flex-row">
         <div class="col-md-3">
-            <img src="{{item['item_image']}}" class="mh-100 rounded-start" alt="Image of {{item['item_name']}}">
+            <img src="{{item['item_image']}}" class="mh-100 rounded-start" width="20px" alt="Image of {{item['item_name']}}">
         </div>
         <div class="col-md-9">
             <div class="card-body ps-1">
