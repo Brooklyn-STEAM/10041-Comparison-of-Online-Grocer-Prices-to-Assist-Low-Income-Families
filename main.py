@@ -54,6 +54,30 @@ def conn_db():
 
     return conn
 
+def search():
+    conn = conn_db()
+    cursor = conn.cursor()
+    query = request.args.get('query')
+
+    user_id = flask_login.current_user.id
+
+    left_join = f"LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id}"
+
+    results=''
+    saved_results=''
+    if query:
+        cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE '%{query}%';")
+
+        results = cursor.fetchall()
+
+        cursor.execute(f"""SELECT Products.id, item_name, item_image 
+                    FROM Cart 
+                    JOIN Products ON product_id = Products.id 
+                    WHERE item_name LIKE '%{query}%'
+                    ;""")
+        
+        saved_results = cursor.fetchall()
+    return 
 
 ## User Session
 @login_manager.user_loader
@@ -426,6 +450,33 @@ def delete_account():
 
     return redirect("/")
 
+
+
+## Search Results Page
+@app.route("/search")
+def search_results():
+    conn = conn_db()
+    cursor = conn.cursor()
+    query = request.args.get('query')
+
+    user_id = flask_login.current_user.id
+
+    left_join = f"LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id}"
+
+    results=''
+    saved_results=''
+    if query:
+        cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE '%{query}%';")
+        results = cursor.fetchall()
+
+        cursor.execute(f"""SELECT Products.id, item_name, item_image 
+                    FROM Cart 
+                    JOIN Products ON product_id = Products.id 
+                    WHERE item_name LIKE '%{query}%'
+                    ;""")
+        saved_results = cursor.fetchall()
+    
+    return render_template("search_results.html.jinja", products=results, saved_products=saved_results)
 
 ## Log Out
 @app.route("/logout")
