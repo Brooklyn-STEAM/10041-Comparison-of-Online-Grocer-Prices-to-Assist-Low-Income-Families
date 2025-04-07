@@ -476,7 +476,7 @@ def search_results():
                     ;""")
         saved_results = cursor.fetchall()
     
-    return render_template("search_results.html.jinja", products=results, search_products=saved_results)
+    return render_template("search_results.html.jinja", products=results, saved_products=saved_results)
 
 ## Log Out
 @app.route("/logout")

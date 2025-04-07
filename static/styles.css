@@ -351,3 +351,15 @@ input:-webkit-autofill:active{
     margin-bottom: 5px;
 }
 
+.search-header-link {
+    color: #231F20;
+}
+
+.search-header-link:hover {
+    color: #486D4E;
+}
+
+.search-card:hover {
+    background-color: #77A780;
+    border-color: #5C8463;
+}
