@@ -1,14 +1,7 @@
-<head>
-<script>
-function search_page() {
-  location.replace("/search")
-}
-</script>
-</head>
-<nav class="navbar navbar-expand-lg primaryColor sticky-top fs-5 w-100 d-flex">
+<nav id="navbar" class="navbar navbar-expand-lg primaryColor sticky-top fs-5 w-100 d-flex">
   <div class="container-fluid">
     <a class="navbar text-White link-underline link-underline-opacity-0 fs-4" href="/">
-      <img src="/static/other_images/CheapCartsLogo.png" alt="Cheap Carts" width="64"  class="d-inline-block align-text-top">
+      <img src="/static/other_images/CheapCartsLogo.png" alt="Cheap Carts" width="55"  class="d-inline-block align-text-top">
       <p class="mb-1 me-3">Cheap Carts</p>
     </a>
 
@@ -19,16 +12,16 @@ function search_page() {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link text-White" aria-current="page" href="/">Home</a>
+          <a class="page-link p-2 {% if request.path == '/' %}active-link rounded secondaryColor{%else%}text-White{%endif%} nav-link text-White" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-White" href="/products">Products</a>
+          <a class="page-link p-2 {% if request.path == '/products' %}active-link rounded secondaryColor{%else%}text-White{%endif%} nav-link text-White" href="/products">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-White" href="/leftovers">Leftovers</a>
+          <a class="page-link p-2 {% if request.path == '/leftovers' %}active-link rounded secondaryColor{%else%}text-White{%endif%} nav-link text-White" href="/leftovers">Leftovers</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-White" href="/guide">Guide</a>
+          <a class="page-link p-2 {% if request.path == '/guide' %}active-link rounded secondaryColor{%else%}text-White{%endif%} nav-link text-White" href="/guide">Guide</a>
         </li>
       </ul>
 
@@ -42,8 +35,8 @@ function search_page() {
             <button class="user-btn btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Hello, {{current_user.username}}!
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/settings">Account</a></li>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-end-lg">
+              <li><a class="dropdown-item {% if request.path == '/settings' %} active-account fw-bold {%endif%}" href="/settings">Account</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="/logout">Logout</a></li>
             </ul>

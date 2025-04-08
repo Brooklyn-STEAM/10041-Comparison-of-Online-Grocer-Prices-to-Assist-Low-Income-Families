@@ -38,8 +38,9 @@
       </div>
       <hr class="product-rule">
 
-      {%if saved_products | length > 0%}
+  
       <h2>From <a href="/leftovers" class="search-header-link link-underline link-underline-opacity-0">Leftovers</a></h2>
+      {%if saved_products | length > 0%}
       <div class="overflow-auto">
         {%for item in saved_products%}
         <div class="search-card card mb-3" style="max-width: 540px;">
