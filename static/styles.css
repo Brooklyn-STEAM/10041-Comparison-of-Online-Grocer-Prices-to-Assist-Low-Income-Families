@@ -67,6 +67,7 @@ body {
 
 #popular-products:hover #popular-img {
     opacity: 0.5;
+    background-color: #EFD577;
 }
 
 #offer:hover #offer-heading {
@@ -78,18 +79,28 @@ body {
     opacity: 0.5;
 }
 
-#mission:hover #mission-heading {
-    opacity: 1;
-    visibility: visible;
+#popular-products {
+    border-right: 3px solid #486D4E;
+    border-bottom: 3px solid #486D4E;
 }
 
-#mission:hover #mission-img {
-    opacity: 0.2;
+#offer {
+    border-left: 3px solid #486D4E;
+    border-bottom: 3px solid #486D4E;
+}
+
+#mission-img {
+    border-top: 3px solid #486D4E;
 }
 
 #start-btn:hover {
     background-color: #FDF2E4;
     border-color: #77A780;
+}
+
+#action-btn:hover {
+    background-color: #486D4E;
+    border-color: #96d4a2;
 }
 
 #popular-products {
