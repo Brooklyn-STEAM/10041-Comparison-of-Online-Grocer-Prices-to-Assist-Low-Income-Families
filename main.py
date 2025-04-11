@@ -211,7 +211,7 @@ def popular_products():
         cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE '%{query}%';")
     
         search_results = cursor.fetchall()
-
+ 
     cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'a&' OR `item_name` LIKE 'b%' OR `item_name` LIKE 'c%' OR `item_name` LIKE 'd%' OR `item_name` LIKE 'e%' OR `item_name` LIKE 'g%' OR `item_name` LIKE 'h%'; ")
 
     results_ah = cursor.fetchall()
@@ -220,7 +220,7 @@ def popular_products():
 
     results_ip = cursor.fetchall()
 
-    cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'q%' OR `item_name` LIKE 'r%' OR `item_name` LIKE 's%' OR `item_name` LIKE 't%' OR `item_name` LIKE 'u%' OR `item_name` LIKE 'v%' OR `item_name` LIKE 'w%' OR `item_name` LIKE 'x%' OR `item_name` LIKE 'y%' OR `item_name` LIKE 'z%' ; ")
+    cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'q%' OR `item_name` LIKE 'r%' OR `item_name` LIKE 's%' OR `item_name` LIKE 't%' OR `item_name` LIKE 'u%' OR `item_name` LIKE 'v%' OR `item_name` LIKE 'w%' OR `item_name` LIKE 'x%' OR `item_name` LIKE 'y%' OR `item_name` LIKE 'z%'; ")
 
     results_qz = cursor.fetchall()
 
@@ -246,14 +246,14 @@ def comparison(products_id):
 
     result = cursor.fetchone()
 
-    cursor.execute(f"SELECT * FROM `CompanyList`; ")
+    cursor.execute(f"SELECT * FROM `Comparison` JOIN `CompanyList` ON `Comparison`.`company` = `CompanyList`.`id` WHERE `product_id` = {products_id}; ")
 
     comp_results = cursor.fetchall()
 
     cursor.close()
     conn.close()
 
-    return render_template("comparison.html.jinja", products=result, comp_products = comp_results)
+    return render_template("comparison.html.jinja", product=result, comp_products = comp_results)
 
 
 ## Leftovers Page
@@ -305,7 +305,7 @@ def save(products_id):
     cursor.close()
     conn.close()
     
-    return redirect("/leftovers")
+    return redirect("/products")
 
 ## Remove Items from Leftovers
 @app.route("/leftovers/<products_id>/unsave", methods=["POST"])
@@ -321,7 +321,7 @@ def unsave(products_id):
     cursor.close()
     conn.close()
 
-    return redirect("/products")
+    return redirect("/leftovers")
 
 ## Clear all from Leftovers
 @app.route("/leftovers/clear_all", methods=["POST"])

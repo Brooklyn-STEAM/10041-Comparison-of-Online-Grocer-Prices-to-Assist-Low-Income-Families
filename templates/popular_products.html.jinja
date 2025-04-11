@@ -17,11 +17,14 @@
   <h1 class="text-center my-2">Popular Products</h1>
 
   <main class="container">
+    <!-- Search Section -->
     <form class="d-flex my-3 mb-4" action="/products" role="search">
       <input id="products-search-bar" class="text-box form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search"
         value="{{request.args.get('query', '')}}">
       <button id="product-search" class="btn secondaryColor" type="submit">Search</button>
     </form>
+
+    <!-- Search Results -->
     {%if search_products | length == 0 and request.args.get('query')%}
       <h2>'{{request.args.get('query')}}' Not Found</h2>
       <hr class="product-rule">
@@ -33,9 +36,11 @@
         <h4 class="text-secondary">{{search_products | length}} Results Found</h4>
       {%endif%}
 
-      <div id="product-search" class="overflow-auto">
+       <!-- Search Results Cards -->
+      <div id="product-search-results" class="overflow-auto">
         {%for item in search_products%}
-        <div id="search-result" class="card mb-3 mx-auto">
+        <div id="search-result" class="search-card card mb-3 mx-auto">
+        <a href="/compare/{{item['id']}}" class="text-black link-underline link-underline-opacity-0">
           <div class="row g-0">
             <div class="col-md-4">
               <img src="{{item['item_image']}}" class="img-fluid rounded-start" alt="...">
@@ -43,12 +48,12 @@
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title fs-1">{{item['item_name']}}</h5>
-                <p class="card-text fs-2">${{item['item_price']}}</p>
               </div>
             </div>
           </div>
         </div>
         {%endfor%}
+        </a>
       </div>
       <hr class="product-rule">
     {%endif%}
@@ -56,19 +61,15 @@
     <h3 class="my-2 mb-3 mt-3">Items From A to H</h3>
     <section class="row flex-nowrap overflow-auto">
       <!-- Add for loop when ready -->
-      {%for item in products_ah%}
-      <div class="product-card card mx-2 mb-3">
+      {%for item in products_ah | sort(attribute='item_name')%}
+      <div class="product-card card mx-2 mb-3 position-relative">
         <a href="/compare/{{item['id']}}" class="text-black link-underline link-underline-opacity-0">
           <img src="{{item['item_image']}}" class="card-img-top mt-1" alt="Image of {{item['item_name']}}">
           <div class="card-body">
             <h5 class="card-title text-center">{{item['item_name']}}</h5>
-            <h5 class="card-title text-center">${{item['item_price']}}</h5>
-          </div>
-          <div>
-
             {%if item['user_id'] == None%}
-            <form action="/leftovers/{{item['id']}}/save" method="post">
-              <button type="submit" class="save-btn btn btn-danger my-2 float-end">
+            <form class="mt-5" action="/leftovers/{{item['id']}}/save" method="post">
+              <button type="submit" class="product-btn save-btn btn btn-danger my-2 float-end position-absolute">
                 <span class="save-label me-1">Save</span>
                 <span class="save-heart"><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"
                     width="20" height="20">
@@ -79,8 +80,8 @@
               </button>
             </form>
             {%else%}
-            <form action="/leftovers/{{item['id']}}/unsave" method="post">
-              <button type="submit" class="save-btn btn btn-white border-black my-2 float-end">
+            <form class="mt-5" action="/leftovers/{{item['id']}}/unsave" method="post">
+              <button type="submit" class="product-btn save-btn btn btn-white border-black my-2 float-end position-absolute">
                 <span>Saved</span>
                 <span><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
                     <path
@@ -98,19 +99,16 @@
 
     <h3 class="my-2 mb-3">Items I to P</h3>
     <section class="row flex-nowrap overflow-auto">
-      {%for item in products_ip%}
-      <div class="product-card card mx-2 mb-3">
+      {%for item in products_ip | sort(attribute='item_name')%}
+      <div class="product-card card mx-2 mb-3 position-relative">
         <a href="/compare/{{item['id']}}" class="text-black link-underline link-underline-opacity-0">
           <img src="{{item['item_image']}}" class="card-img-top mt-1" alt="Image of {{item['item_name']}}">
           <div class="card-body">
             <h5 class="card-title text-center">{{item['item_name']}}</h5>
-            <h5 class="card-title text-center">${{item['item_price']}}</h5>
-          </div>
-          <div>
 
-            {%if item['user_id'] == None%}
-            <form action="/leftovers/{{item['id']}}/save" method="post">
-              <button type="submit" class="save-btn btn btn-danger my-2 float-end">
+             {%if item['user_id'] == None%}
+            <form class="mt-5" action="/leftovers/{{item['id']}}/save" method="post">
+              <button type="submit" class="product-btn save-btn btn btn-danger my-2 float-end position-absolute">
                 <span class="save-label me-1">Save</span>
                 <span class="save-heart"><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"
                     width="20" height="20">
@@ -121,8 +119,8 @@
               </button>
             </form>
             {%else%}
-            <form action="/leftovers/{{item['id']}}/unsave" method="post">
-              <button type="submit" class="save-btn btn btn-white border-black my-2 float-end">
+            <form class="mt-5" action="/leftovers/{{item['id']}}/unsave" method="post">
+              <button type="submit" class="product-btn save-btn btn btn-white border-black my-2 float-end position-absolute">
                 <span>Saved</span>
                 <span><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
                     <path
@@ -140,19 +138,16 @@
 
     <h3 class="my-2 mb-3">Items Q to Z</h3>
     <section class="row flex-nowrap overflow-auto">
-      {%for item in products_qz%}
-      <div class="product-card card mx-2 mb-3">
+      {%for item in products_qz | sort(attribute='item_name')%}
+      <div class="product-card card mx-2 mb-3 position-relative">
         <a href="/compare/{{item['id']}}" class="text-black link-underline link-underline-opacity-0">
           <img src="{{item['item_image']}}" class="card-img-top mt-1" alt="Image of {{item['item_name']}}">
           <div class="card-body">
             <h5 class="card-title text-center">{{item['item_name']}}</h5>
-            <h5 class="card-title text-center">${{item['item_price']}}</h5>
-          </div>
-          <div>
 
             {%if item['user_id'] == None%}
-            <form action="/leftovers/{{item['id']}}/save" method="post">
-              <button type="submit" class="save-btn btn btn-danger my-2 float-end">
+            <form class="mt-5" action="/leftovers/{{item['id']}}/save" method="post">
+              <button type="submit" class="product-btn save-btn btn btn-danger my-2 float-end position-absolute">
                 <span class="save-label me-1">Save</span>
                 <span class="save-heart"><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"
                     width="20" height="20">
@@ -163,8 +158,8 @@
               </button>
             </form>
             {%else%}
-            <form action="/leftovers/{{item['id']}}/unsave" method="post">
-              <button type="submit" class="save-btn btn btn-white border-black my-2 float-end">
+            <form class="mt-5" action="/leftovers/{{item['id']}}/unsave" method="post">
+              <button type="submit" class="product-btn save-btn btn btn-white border-black my-2 float-end position-absolute">
                 <span>Saved</span>
                 <span><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
                     <path
