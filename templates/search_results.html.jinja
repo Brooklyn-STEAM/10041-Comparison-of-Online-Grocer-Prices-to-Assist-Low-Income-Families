@@ -10,14 +10,14 @@
   </head>
   <body>
   {% include "components/navbar.html.jinja" %}
-    <h1 class="text-center mt-3">Search Results</h1>
+    <h1 class="text-center mt-3">Search Results for '{{request.args.get('query')}}'</h1>
 
     <main class="container">
       <h2>From <a href="/products" class="search-header-link link-underline link-underline-opacity-0">Products</a></h2>
       {%if products | length > 0%}
-      <div class="overflow-auto">
+      <div class="search-box overflow-auto row">
         {%for item in products%}
-        <div class="search-card card mb-3" style="max-width: 540px;">
+        <div class="search-card card mb-3 col-6">
         <a href="/compare/{{item['id']}}" class="text-black link-underline link-underline-opacity-0">
           <div class="row g-0">
             <div class="col-md-4">
@@ -41,9 +41,9 @@
   
       <h2>From <a href="/leftovers" class="search-header-link link-underline link-underline-opacity-0">Leftovers</a></h2>
       {%if saved_products | length > 0%}
-      <div class="overflow-auto">
+      <div class="search-box overflow-auto row">
         {%for item in saved_products%}
-        <div class="search-card card mb-3" style="max-width: 540px;">
+        <div class="search-card card mb-3 col-6">
         <a href="/compare/{{item['id']}}" class="text-black link-underline link-underline-opacity-0">
           <div class="row g-0">
             <div class="col-md-4">

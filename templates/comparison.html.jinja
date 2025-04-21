@@ -46,18 +46,24 @@
         </section>
 
         <section class="mx-auto">
-            <div class="row">
+            <div class="row mx-auto">
                 {%for company in comp_products%}
-                    <div class="col p-0">
-                        <div class="mx-auto compare-card card text-center p-0 mb-2 me-2">
-                            <a href="https://{{company['root_link']}}" target="_blank" class="text-black link-underline link-underline-opacity-0">
-                                <div class="card-body">
+                    <div class="col col-12-sm p-0">
+                        <div class="mx-auto compare-card card text-center p-0 mb-2 me-2 h-100">
+                            <a href="https://{{company['root_link']}}" target="_blank" class="text-black link-underline link-underline-opacity-0 h-100">
+                                <div class="card-body h-100 d-flex flex-column">
                                     <h3 class="card-title text-center mt-2">{{company['company_name']}}</h3>
                                     <div id="saved-rule"></div>
-                                    <h3 class="card-title text-center mt-3">{{company['product_name']}}</h3>
-                                   
+                                    
+                                    <div class="flex-grow-1"></div>
+
+                                    <p class="card-title text-center mt-3 fs-5">{{company['product_name']}}</p>
+
+                                    <div class="flex-grow-1"></div>
+
                                     <p class="fs-3 mt-5 text-center">${{"%.2f" | format(company['product_price'])}}</p>
-                                    <div id="saved-rule"></div>
+
+                                    <div id="saved-rule" class="bottom-0"></div>
                                 </div> 
                             </a>
                             </div>
