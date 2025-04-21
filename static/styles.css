@@ -365,6 +365,10 @@ input:-webkit-autofill:active{
     color: #486D4E;
 }
 
+.search-box {
+    max-height: 300px;
+}
+
 .search-card:hover {
     background-color: #77A780;
     border-color: #5C8463;
