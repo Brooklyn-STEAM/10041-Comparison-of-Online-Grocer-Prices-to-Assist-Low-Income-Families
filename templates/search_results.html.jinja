@@ -10,8 +10,13 @@
   </head>
   <body>
   {% include "components/navbar.html.jinja" %}
+    {%if request.args.get('query') == None%}
+      <p class="my-5 py-5 invisible">...</p>
+      <h1 class="my-5 display-1 text-center">Search Not Found</h1>
+      <p class="my-5 py-5 invisible">...</p>
+      <p class="my-5 py-5 invisible">...</p>
+    {%else%}
     <h1 class="text-center mt-3">Search Results for '{{request.args.get('query')}}'</h1>
-
     <main class="container">
       <h2>From <a href="/products" class="search-header-link link-underline link-underline-opacity-0">Products</a></h2>
       {%if products | length > 0%}
@@ -21,11 +26,11 @@
         <a href="/compare/{{item['id']}}" class="text-black link-underline link-underline-opacity-0">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="/static/other_images/Temp-Item.png" class="img-fluid rounded-start" alt="">
+              <img src="/static/other_images/Temp-Item.png" class="img-fluid rounded-start" alt="Image of {{item['item_name']}}">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h3 class="card-title">{{item['item_name']}}</h3>
+                <h3 class="card-title text-center">{{item['item_name']}}</h3>
               </div>
             </div>
           </div>
@@ -36,10 +41,10 @@
           <h1 class="text-center">'{{request.args.get('query')}}' Not Found</h1>
         {%endif%}
       </div>
-      <hr class="product-rule">
+      <hr class="product-rule my-4">
 
   
-      <h2>From <a href="/leftovers" class="search-header-link link-underline link-underline-opacity-0">Leftovers</a></h2>
+      <h2 class="mt-4">From <a href="/leftovers" class="search-header-link link-underline link-underline-opacity-0">Leftovers</a></h2>
       {%if saved_products | length > 0%}
       <div class="search-box overflow-auto row">
         {%for item in saved_products%}
@@ -64,6 +69,7 @@
       </div>
       <hr class="product-rule">
     </main>
+    {%endif%}
 
 
 
