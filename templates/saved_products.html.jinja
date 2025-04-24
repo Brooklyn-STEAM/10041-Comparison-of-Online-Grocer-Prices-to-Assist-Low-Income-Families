@@ -65,18 +65,17 @@
         {%if products |length > 0%}
         {%for item in products | sort(attribute='item_name')%}
         <a href="/compare/{{item['id']}}" class="mb-2 saved-card card text-black link-underline link-underline-opacity-0 flex-row">
-            <div class="col-3">
+            <div class="col-md-3">
                 <img src="{{item['item_image']}}" class="mh-100 rounded-start" width="20px" alt="Image of {{item['item_name']}}">
             </div>
-            <div class="col-9">
+            <div class="col-md-9">
                 <div class="card-body ps-1">
                     <h3 class="card-title">{{item['item_name']}}</h3>
 
-    
                     <form class="float-end mb-2" action="/leftovers/{{item['id']}}/unsave" method="post">
-                        <button type="submit" class="btn btn-danger float-end">
+                        <button type="submit" class="btn btn-danger">
                             <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="19" height="19"><path d="M4.5 3V1.5a1 1 0 011-1h4a1 1 0 011 1V3M0 3.5h15m-13.5 0v10a1 1 0 001 1h10a1 1 0 001-1v-10M7.5 7v5m-3-3v3m6-3v3" stroke="currentColor"></path></svg>
-                         </button>
+                        </button>
                     </form>
                 </div>
             </div>
