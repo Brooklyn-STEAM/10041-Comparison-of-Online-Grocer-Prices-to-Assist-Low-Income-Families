@@ -33,8 +33,15 @@ body {
     color: #231F20;
 }
 
+.text-Lightgray {
+    color: lightgray;
+}
+.text-Secondarygreen {
+    color: #304434;
+}
+
 .primaryColor {
-    background-color: #5c8463;
+    background-color: rgb(44, 100, 54);
 }
 
 .secondaryColor {
@@ -47,6 +54,10 @@ body {
 
 .border-White {
     border: 1px solid #FFFFFF;
+}
+
+.border-Secondarygreen {
+    border: 1px solid #304434;
 }
 
 .border-Cambridge {
@@ -300,7 +311,7 @@ body {
 }
 
 .active-link {
-    color: black; 
+    color: rgb(66, 66, 66); 
 }
 
 .footer-link:hover {
@@ -386,7 +397,7 @@ input:-webkit-autofill:active{
 
 .page-link:hover {
     background-color: #77A780;
-    color: black;
+    color: lightgray;
     border-radius: 5px;
 } 
 
@@ -396,9 +407,18 @@ input:-webkit-autofill:active{
 }
 
 #leftovers-section {
-    height: 300px;
+    height: 500px;
+    border: 2px solid #486D4E;
+    border-radius: 20px;
+    background-color: #77A780;
 }
 
 #product-search-results {
     height: 300px;
+}
+
+.page-search:hover {
+    color: white;
+    border-color: white;
+    background-color: #77A780;
 }
