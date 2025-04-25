@@ -195,34 +195,53 @@ def login():
 
 ## Popular Products Page
 @app.route("/products")
-@flask_login.login_required
 def popular_products():
     conn = conn_db()
     cursor = conn.cursor()
     query = request.args.get('query')
 
-    user_id = flask_login.current_user.id
-
-    left_join = f"LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id} "
-
     search_results = []
 
-    if query:
+    if query and flask_login.current_user.is_authenticated:
+        user_id = flask_login.current_user.id
+        left_join = f"LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id}"
+
         cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE '%{query}%';")
     
         search_results = cursor.fetchall()
+    elif query and not flask_login.current_user.is_authenticated:
+        cursor.execute(f"SELECT * FROM `Products` WHERE `item_name` LIKE '%{query}%';")
+    
+        search_results = cursor.fetchall()
  
-    cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'a&' OR `item_name` LIKE 'b%' OR `item_name` LIKE 'c%' OR `item_name` LIKE 'd%' OR `item_name` LIKE 'e%' OR `item_name` LIKE 'g%' OR `item_name` LIKE 'h%'; ")
+    if flask_login.current_user.is_authenticated:
+        user_id = flask_login.current_user.id
+        left_join = f"LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id}"
 
-    results_ah = cursor.fetchall()
+        cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'a&' OR `item_name` LIKE 'b%' OR `item_name` LIKE 'c%' OR `item_name` LIKE 'd%' OR `item_name` LIKE 'e%' OR `item_name` LIKE 'g%' OR `item_name` LIKE 'h%'; ")
 
-    cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'i%' OR `item_name` LIKE 'j%' OR `item_name` LIKE 'k%' OR `item_name` LIKE 'l%' OR `item_name` LIKE 'm%' OR `item_name` LIKE 'n%' OR `item_name` LIKE 'o%' OR `item_name` LIKE 'p%'; ")
+        results_ah = cursor.fetchall()
 
-    results_ip = cursor.fetchall()
+        cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'i%' OR `item_name` LIKE 'j%' OR `item_name` LIKE 'k%' OR `item_name` LIKE 'l%' OR `item_name` LIKE 'm%' OR `item_name` LIKE 'n%' OR `item_name` LIKE 'o%' OR `item_name` LIKE 'p%'; ")
 
-    cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'q%' OR `item_name` LIKE 'r%' OR `item_name` LIKE 's%' OR `item_name` LIKE 't%' OR `item_name` LIKE 'u%' OR `item_name` LIKE 'v%' OR `item_name` LIKE 'w%' OR `item_name` LIKE 'x%' OR `item_name` LIKE 'y%' OR `item_name` LIKE 'z%'; ")
+        results_ip = cursor.fetchall()
 
-    results_qz = cursor.fetchall()
+        cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'q%' OR `item_name` LIKE 'r%' OR `item_name` LIKE 's%' OR `item_name` LIKE 't%' OR `item_name` LIKE 'u%' OR `item_name` LIKE 'v%' OR `item_name` LIKE 'w%' OR `item_name` LIKE 'x%' OR `item_name` LIKE 'y%' OR `item_name` LIKE 'z%'; ")
+
+        results_qz = cursor.fetchall()
+    else:
+        cursor.execute(f"SELECT * FROM `Products` WHERE `item_name` LIKE 'a&' OR `item_name` LIKE 'b%' OR `item_name` LIKE 'c%' OR `item_name` LIKE 'd%' OR `item_name` LIKE 'e%' OR `item_name` LIKE 'g%' OR `item_name` LIKE 'h%'; ")
+
+        results_ah = cursor.fetchall()
+
+        cursor.execute(f"SELECT * FROM `Products` WHERE `item_name` LIKE 'i%' OR `item_name` LIKE 'j%' OR `item_name` LIKE 'k%' OR `item_name` LIKE 'l%' OR `item_name` LIKE 'm%' OR `item_name` LIKE 'n%' OR `item_name` LIKE 'o%' OR `item_name` LIKE 'p%'; ")
+
+        results_ip = cursor.fetchall()
+
+        cursor.execute(f"SELECT * FROM `Products` WHERE `item_name` LIKE 'q%' OR `item_name` LIKE 'r%' OR `item_name` LIKE 's%' OR `item_name` LIKE 't%' OR `item_name` LIKE 'u%' OR `item_name` LIKE 'v%' OR `item_name` LIKE 'w%' OR `item_name` LIKE 'x%' OR `item_name` LIKE 'y%' OR `item_name` LIKE 'z%'; ")
+
+        results_qz = cursor.fetchall()
+
 
     cursor.close()
     conn.close()
@@ -236,19 +255,31 @@ def comparison(products_id):
     conn = conn_db()
     cursor = conn.cursor()
 
-    user_id = flask_login.current_user.id
+    if flask_login.current_user.is_authenticated:
+        user_id = flask_login.current_user.id
 
-    cursor.execute(f"""
-                    SELECT * FROM `Products` 
-                    LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id} 
-                    WHERE `Products`.`id` = {products_id}; 
-                """)
+        cursor.execute(f"""
+                        SELECT * FROM `Products` 
+                        LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id} 
+                        WHERE `Products`.`id` = {products_id}; 
+                    """)
 
-    result = cursor.fetchone()
+        result = cursor.fetchone()
 
-    cursor.execute(f"SELECT * FROM `Comparison` JOIN `CompanyList` ON `Comparison`.`company` = `CompanyList`.`id` WHERE `product_id` = {products_id}; ")
+        cursor.execute(f"SELECT * FROM `Comparison` JOIN `CompanyList` ON `Comparison`.`company` = `CompanyList`.`id` WHERE `product_id` = {products_id}; ")
 
-    comp_results = cursor.fetchall()
+        comp_results = cursor.fetchall()
+    else:
+        cursor.execute(f"""
+                        SELECT * FROM `Products` 
+                        WHERE `Products`.`id` = {products_id}; 
+                    """)
+
+        result = cursor.fetchone()
+
+        cursor.execute(f"SELECT * FROM `Comparison` JOIN `CompanyList` ON `Comparison`.`company` = `CompanyList`.`id` WHERE `product_id` = {products_id}; ")
+
+        comp_results = cursor.fetchall()
 
     cursor.close()
     conn.close()
@@ -443,7 +474,9 @@ def delete_account():
 
     user_id = flask_login.current_user.id
 
+    cursor.execute(f"DELETE FROM `Cart` WHERE `user_id` = {user_id}; ")
     cursor.execute(f"DELETE FROM `Users` WHERE `id` = {user_id}; ")
+   
 
     cursor.close()
     conn.close()
