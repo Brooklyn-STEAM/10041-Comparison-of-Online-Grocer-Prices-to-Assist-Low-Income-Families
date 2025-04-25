@@ -209,6 +209,7 @@ def popular_products():
         cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE '%{query}%';")
     
         search_results = cursor.fetchall()
+
     elif query and not flask_login.current_user.is_authenticated:
         cursor.execute(f"SELECT * FROM `Products` WHERE `item_name` LIKE '%{query}%';")
     
@@ -492,14 +493,25 @@ def search_results():
     cursor = conn.cursor()
     query = request.args.get('query')
 
-    user_id = flask_login.current_user.id
-
-    left_join = f"LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id}"
-
     results=''
     saved_results=''
-    if query:
+
+    if flask_login.current_user.is_authenticated:
+        user_id = flask_login.current_user.i
+        left_join = f"LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id}"
+        
         cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE '%{query}%';")
+        results = cursor.fetchall()
+
+        cursor.execute(f"""SELECT Products.id, item_name, item_image 
+                    FROM Cart 
+                    JOIN Products ON product_id = Products.id 
+                    WHERE item_name LIKE '%{query}%'
+                    ;""")
+        saved_results = cursor.fetchall()
+
+    if query and not flask_login.current_user.is_authenticated:
+        cursor.execute(f"SELECT * FROM `Products` WHERE `item_name` LIKE '%{query}%';")
         results = cursor.fetchall()
 
         cursor.execute(f"""SELECT Products.id, item_name, item_image 

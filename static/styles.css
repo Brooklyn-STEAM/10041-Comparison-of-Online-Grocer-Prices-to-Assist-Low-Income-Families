@@ -311,11 +311,11 @@ body {
 }
 
 .active-link {
-    color: rgb(66, 66, 66); 
+    color: #face2e; 
 }
 
 .footer-link:hover {
-    color: black;
+    color: #EFD577;
 }
 
 .background-image {
@@ -339,7 +339,7 @@ div #guide-block {
 }
 
 .social-icon:hover {
-    color: black;
+    color: #EFD577;
 }
 
 .product-rule {
