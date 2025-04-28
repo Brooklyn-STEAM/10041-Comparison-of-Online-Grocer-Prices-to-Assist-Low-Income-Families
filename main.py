@@ -497,7 +497,7 @@ def search_results():
     saved_results=''
 
     if flask_login.current_user.is_authenticated:
-        user_id = flask_login.current_user.i
+        user_id = flask_login.current_user.id
         left_join = f"LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id}"
         
         cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE '%{query}%';")
