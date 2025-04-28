@@ -32,10 +32,10 @@
 
       {%if current_user.is_authenticated%}
           <div class="dropdown">
-            <button class="user-btn btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="user-btn btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Hello, {{current_user.username}}!
             </button>
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-end-lg">
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-end-lg w-100">
               <li><a class="dropdown-item {% if request.path == '/settings' %} active-account fw-bold {%endif%}" href="/settings">Account</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="/logout">Logout</a></li>

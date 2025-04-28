@@ -422,3 +422,17 @@ input:-webkit-autofill:active{
     border-color: white;
     background-color: #77A780;
 }
+
+.dropdown-item {
+    --bs-dropdown-link-active-bg: #77A780;
+}
+
+.dropdown-toggle {
+    --bs-btn-active-bg: #486D4E;
+    --bs-btn-active-border-color:  #77A780;
+}
+
+.saved-btn:hover {
+    background-color: #f0f0f0;
+   
+}
