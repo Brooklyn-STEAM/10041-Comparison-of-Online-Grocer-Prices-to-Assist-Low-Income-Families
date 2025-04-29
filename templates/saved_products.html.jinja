@@ -64,7 +64,7 @@
     <div id="leftovers-section" class="overflow-auto me-2">
         {%if products |length > 0%}
         {%for item in products | sort(attribute='item_name')%}
-        <a href="/compare/{{item['id']}}" class="mb-2 saved-card card text-black link-underline link-underline-opacity-0 flex-row">
+        <a href="/savecompare/{{item['id']}}" class="mb-2 saved-card card text-black link-underline link-underline-opacity-0 flex-row">
             <div class="col-md-3">
                 <img src="{{item['item_image']}}" class="mh-100 rounded-start" width="100px" alt="Image of {{item['item_name']}}">
             </div>

@@ -287,6 +287,42 @@ def comparison(products_id):
 
     return render_template("comparison.html.jinja", product=result, comp_products = comp_results)
 
+@app.route("/savecompare/<products_id>")
+def saved_comparison(products_id):
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    if flask_login.current_user.is_authenticated:
+        user_id = flask_login.current_user.id
+
+        cursor.execute(f"""
+                        SELECT * FROM `Products` 
+                        LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id} 
+                        WHERE `Products`.`id` = {products_id}; 
+                    """)
+
+        result = cursor.fetchone()
+
+        cursor.execute(f"SELECT * FROM `Comparison` JOIN `CompanyList` ON `Comparison`.`company` = `CompanyList`.`id` WHERE `product_id` = {products_id}; ")
+
+        comp_results = cursor.fetchall()
+    else:
+        cursor.execute(f"""
+                        SELECT * FROM `Products` 
+                        WHERE `Products`.`id` = {products_id}; 
+                    """)
+
+        result = cursor.fetchone()
+
+        cursor.execute(f"SELECT * FROM `Comparison` JOIN `CompanyList` ON `Comparison`.`company` = `CompanyList`.`id` WHERE `product_id` = {products_id}; ")
+
+        comp_results = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return render_template("saved_comparison.html.jinja", product=result, comp_products = comp_results)
+
 
 ## Leftovers Page
 @app.route("/leftovers")

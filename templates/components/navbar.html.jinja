@@ -27,7 +27,7 @@
 
       <form action="/search" id="nav-search" class="nav-search d-flex me-3" role="search">
         <input name="query" id="search_bar" class="text-box form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search" value="{{request.args.get('query', '')}}">
-        <button class="btn text-Secondarygreen secondaryColor border-Secondarygreen h-50 page-search" type="submit">Search</button>
+        <button class="btn h-50 page-search" type="submit">Search</button>
       </form>
 
       {%if current_user.is_authenticated%}
