@@ -417,10 +417,25 @@ input:-webkit-autofill:active{
     height: 300px;
 }
 
+.page-search {
+    background-color: #77A780;
+    color: lightgray;
+    border-color: lightgray;
+    border-radius: 5px;
+}
+
 .page-search:hover {
     color: white;
     border-color: white;
+    background-color: #88be92;
+    border-radius: 5px;
+}
+
+.page-search:active {
+    color: white;
+    border-color: white;
     background-color: #77A780;
+    border-radius: 5px;
 }
 
 .dropdown-item {
