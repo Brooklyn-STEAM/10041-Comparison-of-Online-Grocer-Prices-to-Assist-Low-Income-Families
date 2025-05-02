@@ -60,10 +60,10 @@
     {%endif%}
 
     <h3 class="my-2 mb-3 mt-3">Items From A to H</h3>
-    <section class="row flex-nowrap overflow-auto">
+    <section class="product-row row flex-nowrap overflow-auto">
       <!-- Add for loop when ready -->
       {%for item in products_ah | sort(attribute='item_name')%}
-      <div class="product-card card mx-2 mb-3 position-relative">
+      <div class="product-card card mx-2 mb-4 position-relative">
         <a href="/compare/{{item['id']}}" class="text-black link-underline link-underline-opacity-0">
           <img src="{{item['item_image']}}" class="card-img-top mt-1" alt="Image of {{item['item_name']}}">
           <div class="card-body">
@@ -114,7 +114,7 @@
     <h3 class="my-2 mb-3">Items I to P</h3>
     <section class="row flex-nowrap overflow-auto">
       {%for item in products_ip | sort(attribute='item_name')%}
-      <div class="product-card card mx-2 mb-3 position-relative">
+      <div class="product-card card mx-2 mb-4 position-relative">
         <a href="/compare/{{item['id']}}" class="text-black link-underline link-underline-opacity-0">
           <img src="{{item['item_image']}}" class="card-img-top mt-1" alt="Image of {{item['item_name']}}">
           <div class="card-body">
@@ -165,7 +165,7 @@
     <h3 class="my-2 mb-3">Items Q to Z</h3>
     <section class="row flex-nowrap overflow-auto">
       {%for item in products_qz | sort(attribute='item_name')%}
-      <div class="product-card card mx-2 mb-3 position-relative">
+      <div class="product-card card mx-2 mb-4 position-relative">
         <a href="/compare/{{item['id']}}" class="text-black link-underline link-underline-opacity-0">
           <img src="{{item['item_image']}}" class="card-img-top mt-1" alt="Image of {{item['item_name']}}">
           <div class="card-body">

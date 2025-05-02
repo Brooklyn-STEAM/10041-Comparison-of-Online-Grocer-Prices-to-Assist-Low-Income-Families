@@ -258,6 +258,7 @@ body {
 
 #guide-block {
     height: 400px;
+    
 }
 
 #fix {
@@ -455,4 +456,8 @@ input:-webkit-autofill:active{
 
 .guide-note {
     font-size: 1px;
+}
+
+.product-row {
+    -webkit-scrollbar-thumb-background: red; 
 }
