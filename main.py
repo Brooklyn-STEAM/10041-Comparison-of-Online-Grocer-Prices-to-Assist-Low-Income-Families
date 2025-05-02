@@ -391,6 +391,22 @@ def unsave(products_id):
 
     return redirect("/leftovers")
 
+@app.route("/leftovers/<products_id>/unsave_products", methods=["POST"])
+@flask_login.login_required
+def unsave_products(products_id):
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    user_id = flask_login.current_user.id
+
+    cursor.execute(f"DELETE FROM `Cart` WHERE `product_id` = {products_id} AND `user_id` = {user_id};")
+
+    cursor.close()
+    conn.close()
+
+    return redirect("/products")
+
+
 ## Clear all from Leftovers
 @app.route("/leftovers/clear_all", methods=["POST"])
 @flask_login.login_required

@@ -93,7 +93,8 @@
               </button>
             </form>
             {%else%}
-            <form class="mt-5" action="/leftovers/{{item['id']}}/unsave" method="post">
+
+            <form class="mt-5" action="/leftovers/{{item['id']}}/unsave_products" method="post">
               <button type="submit" class="product-btn save-btn btn btn-white border-black my-2 float-end position-absolute">
                 <span>Saved</span>
                 <span><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
@@ -143,7 +144,7 @@
               </button>
             </form>
             {%else%}
-            <form class="mt-5" action="/leftovers/{{item['id']}}/unsave" method="post">
+            <form class="mt-5" action="/leftovers/{{item['id']}}/unsave_products" method="post">
               <button type="submit"
                 class="product-btn save-btn btn btn-white border-black my-2 float-end position-absolute">
                 <span>Saved</span>
@@ -195,7 +196,8 @@
               </button>
             </form>
             {%else%}
-            <form class="mt-5" action="/leftovers/{{item['id']}}/unsave" method="post">
+            <form class="mt-5" action="/leftovers/{{item['id']}}/unsave_products" method="post">
+            
               <button type="submit"
                 class="product-btn save-btn btn btn-white border-black my-2 float-end position-absolute">
                 <span>Saved</span>
