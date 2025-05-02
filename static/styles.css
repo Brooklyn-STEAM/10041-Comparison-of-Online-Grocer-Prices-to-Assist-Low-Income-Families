@@ -258,6 +258,7 @@ body {
 
 #guide-block {
     height: 400px;
+    
 }
 
 #fix {
@@ -414,7 +415,8 @@ input:-webkit-autofill:active{
 }
 
 #product-search-results {
-    height: 300px;
+    max-height: 200px;
+
 }
 
 .page-search {
@@ -450,4 +452,12 @@ input:-webkit-autofill:active{
 .saved-btn:hover {
     background-color: #f0f0f0;
    
+}
+
+.guide-note {
+    font-size: 1px;
+}
+
+.product-row {
+    -webkit-scrollbar-thumb-background: red; 
 }

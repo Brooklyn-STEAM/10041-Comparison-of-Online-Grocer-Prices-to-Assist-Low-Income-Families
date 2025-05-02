@@ -17,7 +17,7 @@ ua = UserAgent()
 options = webdriver.ChromeOptions()
 options.add_argument(f"user-agent={ua.random}")
 driver = uc.Chrome(options=options)
-search = "Turnip"
+search = "Cucumber"
 conf = Dynaconf(
     settings_file = ["settings.toml"]
 )

@@ -24,7 +24,7 @@
 
     <main class="container mt-3">
         <div class="row">
-            <div class="col-12 col-md-4 mb-3">
+            <div class="col-12 col-md mb-3">
                 <div id="list-example" class="list-group mt-3 fs-3">
                     <a class="list-group-item list-group-item-action" href="#introduction">Introduction</a>
                     <a class="list-group-item list-group-item-action" href="#how-to-use">How to Use</a>
@@ -37,9 +37,9 @@
                         <h5 id="introduction" class="card-header h5 fs-2 text-center">Introduction</h5>
                         <div class="card-body">
                             <h5 class="card-title fs-3">Hello!</h5>
-                            <p class="card-text fs-5">Welcome to CheapCarts! We are an online service that compares
-                                online retail grocery prices to allow you to access food at the best price for you.
-                                CheapCarts allows our users to make more informed decisions on how much food prices
+                            <p class="card-text fs-5">Welcome to Cheap Carts! We are an online service that compares
+                                online retail grocery prices to help you to access food at the best price for you.
+                                Cheap Carts allows our users to make more informed decisions on how much food prices
                                 differ between stores and allow you to make the best decision for you and your family's
                                 needs. </p>
                             <p class="card-text fw-bold text-center fs-4">Let's get you started!</p>
@@ -54,7 +54,7 @@
                                 <li class="fs-5">
                                     <p class="card-text fs-5">
                                     You can go to the navigation bar at the top of the screen and click <a href="/products" class="guide-link text-Cambridge link-underline link-underline-opacity-0">"Products"</a>,
-                                    which will take you to the Products page where you can search through our
+                                    which will take you to the <a href="/products" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Products</a> page where you can search through our
                                     selection.
                                     </p>
                                 </li>
@@ -71,13 +71,21 @@
                                 
                             </ol>
 
+                            <p class="card-text fs-5 fw-bold">This is what the <a href="/products" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Products</a> page looks like:</p>
+
+                            <img src="/static/other_images/product-page.png" alt="Image of Product Page" width="400px" class="mx-auto mb-3">
 
                             <p class="card-text fs-5">
                             When you make it to the <a href="/products" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Product Page</a>, you can scroll through the different products that we offer. Clicking on one of the items will take to you to its individual page.</p>
 
+                            <p class="card-text fs-5 fw-bold">This is an example of what the Individual page looks like:</p>
+
+                            <img src="/static/other_images/indiv-product-page.png" alt="Image of Bread's Product Page" width="400px" class="mx-auto mb-3">
+
                             <p class="card-text fs-5">
-                            On an item's individual page, four online retail prices for the item you selected will be shown side by side and you can pick the option that is best for you. Selecting one of the retailer's card will take you directly to the item's page on the retailer's store for you to purchase.
+                            On an item's individual page, three online retail prices for the item you selected will be shown side by side and you can pick the option that is best for you. Selecting one of the retailer's card will take you directly to the search results for that item on the retailer's site.
                             </p>
+
                         </div>
                     </div>
 
@@ -86,8 +94,18 @@
                         <h5 id="save" class="card-header fs-2 text-center">Saving Items</h5>
                         <div class="card-body">
                             <h5 class="card-title fs-3">How to Save an Item</h5>
+
+                            <p class="guide-note card-text fs-6"><b>Note:</b> To save items, you must have an account. To make an account, click the yellow <a href="/login">"Login"</a> button in the navigation bar (it is on the far right) and click the blue <a href="/register">Sign Up</a> link at the bottom of the card.</p>
+
+                            <hr>
+
                             <p class="card-text fs-5">Our customers can save different items to the <a href="/leftovers" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Leftovers</a> page,
                             which can be accessed from the navigation bar.</p>
+
+                            <p class="card-text fs-5">In order to save an item, you can click the red heart button on
+                                the bottom right corner of the item card on the <a href="/products" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Product Page</a> or
+                                below the item name on its individual product page.
+                            </p>
 
                             <p class="card-text fs-5 fw-bold">The Save Button looks like this:</p>
                             <!-- This button is not meant to be functional -->
@@ -101,11 +119,20 @@
                                     </svg></span>
                             </button>
 
-                            <p class="card-text fs-5">In order to save an item, you can click the red heart button on
-                                the bottom right corner of the item card on the <a href="/products" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Product Page</a> or
-                                below the item name on its individual product page.</p>
+                            <p class="card-text fs-5">After you save the item, you can see it on the <a href="/leftovers" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Leftovers</a> page and the Save button will become the Saved button.</p>
 
-                            <p class="card-text fs-5">After you save the item, you can see it on the <a href="/leftovers" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Leftovers</a> page.</p>
+                            <p class="card-text fs-5 fw-bold">The Saved button looks like this:</p>
+
+                            <button type="button" class="unsave-btn product-btn save-btn btn btn-white border-black my-1">
+                                <span>Saved</span>
+                                <span><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                                    <path
+                                    d="M7.5 13.5l-.354.354a.5.5 0 00.708 0L7.5 13.5zM1.536 7.536l-.354.353.354-.353zm5-5l-.354.353.354-.353zM7.5 3.5l-.354.354a.5.5 0 00.708 0L7.5 3.5zm.964-.964l-.353-.354.353.354zm-.61 10.61L1.889 7.182l-.707.707 5.964 5.965.708-.708zm5.257-5.964l-5.965 5.964.708.708 5.964-5.965-.707-.707zM6.182 2.889l.964.965.708-.708-.965-.964-.707.707zm1.672.965l.964-.965-.707-.707-.965.964.708.708zM10.964 1c-1.07 0-2.096.425-2.853 1.182l.707.707A3.037 3.037 0 0110.964 2V1zM14 5.036c0 .805-.32 1.577-.89 2.146l.708.707A4.036 4.036 0 0015 5.036h-1zm1 0A4.036 4.036 0 0010.964 1v1A3.036 3.036 0 0114 5.036h1zM4.036 2c.805 0 1.577.32 2.146.89l.707-.708A4.036 4.036 0 004.036 1v1zM1 5.036A3.036 3.036 0 014.036 2V1A4.036 4.036 0 000 5.036h1zm.89 2.146A3.035 3.035 0 011 5.036H0c0 1.07.425 2.096 1.182 2.853l.707-.707z"
+                                    fill="currentColor"></path>
+                                </svg></span>
+                            </button>
+
+                            <p class="card-text fs-5">If you want to unsave an item, just click on the Saved button.</p>
 
                             <hr>
         
@@ -121,7 +148,7 @@
                             </button>
 
 
-                            <p class="card-text fs-5 mt-3">You can also clear all of your Leftovers by clicking the button in the top right hand corner.</p>
+                            <p class="card-text fs-5 mt-3">You can also clear all of your Leftovers by clicking the "Clear All" button, which is in top right hand corner.</p>
 
                             <p class="card-text fw-bold fs-5">The Clear All Button looks like this: </p>
                             <button type="button" id="save-clear" class="m-2 btn btn-danger" data-bs-toggle="modal" data-bs-target="#clearItemsModal">
