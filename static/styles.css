@@ -461,3 +461,8 @@ input:-webkit-autofill:active{
 .product-row {
     -webkit-scrollbar-thumb-background: red; 
 }
+
+.access-card {
+    max-width: 500px;
+    min-width: 340px;
+}
