@@ -55,27 +55,51 @@
         <section class="mx-auto">
             <div class="row mx-auto">
                 {%for company in comp_products%}
-                    <div class="col col-12-sm p-0">
-                        <div class="mx-auto compare-card card text-center p-0 mb-2 me-2 h-100">
-                            <a href="{{company['root_link']}}{{product['item_name']}}" target="_blank" class="text-black link-underline link-underline-opacity-0 h-100">
-                                <div class="card-body h-100 d-flex flex-column">
-                                    <h3 class="card-title text-center mt-2">{{company['company_name']}}</h3>
-                                    <div id="saved-rule"></div>
-                                    
-                                    <div class="flex-grow-1"></div>
+                    {%if company['product_name'] == "None"%}
+                        <div class="col col-12-sm p-0">
+                            <div class="mx-auto compare-card card text-center p-0 mb-2 me-2 h-100">
+                                <a href="{{company['root_link']}}{{product['item_name']}}" target="_blank" class="text-black link-underline link-underline-opacity-0 h-100">
+                                    <div class="card-body h-100 d-flex flex-column">
+                                        <h3 class="card-title text-center mt-2">{{company['company_name']}}</h3>
+                                        <div id="saved-rule"></div>
+                                        
+                                        <div class="flex-grow-1"></div>
 
-                                    <p class="card-title text-center mt-3 fs-5">{{company['product_name']}}</p>
+                                        <p class="card-title text-center mt-3 fs-3">Couldn't get the item you were looking for.</p>
 
-                                    <div class="flex-grow-1"></div>
+                                        <div class="flex-grow-1"></div>
 
-                                    <p class="fs-3 mt-5 text-center">${{"%.2f" | format(company['product_price'])}}</p>
+                                        <p class="fs-4 mt-5 text-center">Go to the website instead?</p>
 
-                                    <div id="saved-rule" class="bottom-0"></div>
-                                </div> 
-                            </a>
+                                        <div id="saved-rule" class="bottom-0"></div>
+                                    </div> 
+                                </a>
                             </div>
                         </div>
-                    {%endfor%}
+
+                    {%else%}
+                        <div class="col col-12-sm p-0">
+                            <div class="mx-auto compare-card card text-center p-0 mb-2 me-2 h-100">
+                                <a href="{{company['root_link']}}{{product['item_name']}}" target="_blank" class="text-black link-underline link-underline-opacity-0 h-100">
+                                    <div class="card-body h-100 d-flex flex-column">
+                                        <h3 class="card-title text-center mt-2">{{company['company_name']}}</h3>
+                                        <div id="saved-rule"></div>
+                                        
+                                        <div class="flex-grow-1"></div>
+
+                                        <p class="card-title text-center mt-3 fs-5">{{company['product_name']}}</p>
+
+                                        <div class="flex-grow-1"></div>
+
+                                        <p class="fs-3 mt-5 text-center">${{"%.2f" | format(company['product_price'])}}</p>
+
+                                        <div id="saved-rule" class="bottom-0"></div>
+                                    </div> 
+                                </a>
+                            </div>
+                        </div>
+                    {%endif%}
+                {%endfor%}
               
             </div>
         </section>
