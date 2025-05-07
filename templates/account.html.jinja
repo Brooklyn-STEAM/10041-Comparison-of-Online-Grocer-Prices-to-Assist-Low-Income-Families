@@ -44,8 +44,6 @@
             </div>
         </div>
 
-
-
         <div class="card mt-3 mb-4">
             <div class="card-header card-header text-center h3">
                 Account Options
@@ -154,12 +152,20 @@
                     </li>
 
                     <li class="list-group-item my-2">
+                        <h5 class="card-title h4">Logout</h5>
+                        <p class="card-text">Would you like to log out of your account?</p>
+                        <a id="account-logout" href="/logout" class="btn mb-2 tertiaryColor">Logout</a>
+                        
+                    
+                    </li>
+
+                    <li class="list-group-item my-2">
                         <h5 class="card-title h4">Delete Account</h5>
                         <div class="mb-3">
                             <label for="deleteAccount" class="form-label">Would you like to delete your account?</label>
                             <br>
                             <!-- Button trigger modal -->
-                            <button type="button" id="delete-cover" class="mt-2 btn btn-danger" data-bs-toggle="modal"
+                            <button type="button" id="delete-cover" class="mt-2 btn btn-lg btn-danger" data-bs-toggle="modal"
                                 data-bs-target="#deleteAccountModal">
                                 Delete Account
                             </button>
