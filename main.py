@@ -219,7 +219,7 @@ def popular_products():
         user_id = flask_login.current_user.id
         left_join = f"LEFT JOIN `Cart` ON `Cart`.`product_id` = `Products`.`id` AND `Cart`.`user_id` = {user_id}"
 
-        cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'a&' OR `item_name` LIKE 'b%' OR `item_name` LIKE 'c%' OR `item_name` LIKE 'd%' OR `item_name` LIKE 'e%' OR `item_name` LIKE 'g%' OR `item_name` LIKE 'h%'; ")
+        cursor.execute(f"SELECT * FROM `Products` {left_join} WHERE `item_name` LIKE 'a%' OR `item_name` LIKE 'b%' OR `item_name` LIKE 'c%' OR `item_name` LIKE 'd%' OR `item_name` LIKE 'e%' OR `item_name` LIKE 'g%' OR `item_name` LIKE 'h%'; ")
 
         results_ah = cursor.fetchall()
 
@@ -231,7 +231,7 @@ def popular_products():
 
         results_qz = cursor.fetchall()
     else:
-        cursor.execute(f"SELECT * FROM `Products` WHERE `item_name` LIKE 'a&' OR `item_name` LIKE 'b%' OR `item_name` LIKE 'c%' OR `item_name` LIKE 'd%' OR `item_name` LIKE 'e%' OR `item_name` LIKE 'g%' OR `item_name` LIKE 'h%'; ")
+        cursor.execute(f"SELECT * FROM `Products` WHERE `item_name` LIKE 'a%' OR `item_name` LIKE 'b%' OR `item_name` LIKE 'c%' OR `item_name` LIKE 'd%' OR `item_name` LIKE 'e%' OR `item_name` LIKE 'g%' OR `item_name` LIKE 'h%'; ")
 
         results_ah = cursor.fetchall()
 
