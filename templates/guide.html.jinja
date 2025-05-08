@@ -29,6 +29,7 @@
                     <a class="list-group-item list-group-item-action" href="#introduction">Introduction</a>
                     <a class="list-group-item list-group-item-action" href="#how-to-use">How to Use</a>
                     <a class="list-group-item list-group-item-action" href="#save">Saving Items</a>
+                    <a class="list-group-item list-group-item-action" href="#account">Your Account</a>
                 </div>
             </div>
             <div id="guide-block" class="col-12 col-md-8 overflow-auto">
@@ -90,7 +91,7 @@
                     </div>
 
 
-                    <div class="card my-3">
+                    <div class="card mt-3">
                         <h5 id="save" class="card-header fs-2 text-center">Saving Items</h5>
                         <div class="card-body">
                             <h5 class="card-title fs-3">How to Save an Item</h5>
@@ -160,6 +161,95 @@
 
 
                         </div>
+                    </div>
+
+                    <div class="card my-3">
+                        <h5 id="account" class="card-header fs-2 text-center">Your Account</h5>
+                        <div class="card-body">
+                            <h5 class="card-title fs-3">Introduction to Your Account</h5>
+                            <p class="card-text fs-5">Cheap Carts allows users to make changes to their account. People can change their password and zip code. Users can also delete their account if needed.</p>
+
+                            <hr>
+
+                            <h5 class="card-title fs-3">Getting to the Account Page</h5>
+                            <p class="card-text fs-5">In order to reach the <a href="/account" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Account</a> page (when signed in) users can click their name and greeting in the navigation bar to access the dropdown menu and click on <a href="/account" class="guide-link text-Cambridge link-underline link-underline-opacity-0">"Account."</a>
+
+                            They could also scroll down to the footer and click <a href="/account" class="guide-link text-Cambridge link-underline link-underline-opacity-0">"Settings"</a> underneath the “My Account” section.
+                            </p>
+
+                            <hr>
+
+                            <h5 class="card-title fs-3">Account Information</h5>
+                            <p class="card-text fs-5">The “Account Information” section contains the user’s username and zip code.</p>
+                            
+                            <p class="card-text fs-5 fw-bold">This is what the Account Information section looks like:</p>
+
+                            <img class="border mb-2" src="/static/other_images/accountinfo.png" alt="The Account Information section of the account page" width="500px">
+
+                            <hr>
+
+                            <h5 class="card-title fs-3">Changing Password</h5>
+                            <p class="card-text fs-5">In order for a user to change their passwords all they need to do is go to the “Change Password” section, enter their current password, new password, confirm their new password, and click the “Change Password” button.</p>
+
+                            <p class="card-text fs-5 fw-bold">This is what the Change Password section looks like:</p>
+
+                            <img class="border mb-2" src="/static/other_images/changepassword.png" alt="The Change Password section of the account page" width="500px">
+
+                            <p class="card-text fs-5">Users must ensure that the new password matches across both fields and the new password must be longer than 8 characters. </p>
+
+                            <p class="card-text fs-5">You can also toggle the visibility of password fields by pressing the “eyeball” button.</p>
+
+                            <p class="card-text fs-5 fw-bold">This is what the Show and Hide Password buttons looks like:</p>
+
+                            <button id="show_new_password_btn" class="btn btn-outline-dark" type="button">
+                                <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                width="15" height="15">
+                                    <path
+                                        d="M.5 7.5l-.464-.186a.5.5 0 000 .372L.5 7.5zm14 0l.464.186a.5.5 0 000-.372L14.5 7.5zm-7 4.5c-2.314 0-3.939-1.152-5.003-2.334a9.368 9.368 0 01-1.449-2.164 5.065 5.065 0 01-.08-.18l-.004-.007v-.001L.5 7.5l-.464.186v.002l.003.004a2.107 2.107 0 00.026.063l.078.173a10.368 10.368 0 001.61 2.406C2.94 11.652 4.814 13 7.5 13v-1zm-7-4.5l.464.186.004-.008a2.62 2.62 0 01.08-.18 9.368 9.368 0 011.449-2.164C3.56 4.152 5.186 3 7.5 3V2C4.814 2 2.939 3.348 1.753 4.666a10.367 10.367 0 00-1.61 2.406 6.05 6.05 0 00-.104.236l-.002.004v.001H.035L.5 7.5zm7-4.5c2.314 0 3.939 1.152 5.003 2.334a9.37 9.37 0 011.449 2.164 4.705 4.705 0 01.08.18l.004.007v.001L14.5 7.5l.464-.186v-.002l-.003-.004a.656.656 0 00-.026-.063 9.094 9.094 0 00-.39-.773 10.365 10.365 0 00-1.298-1.806C12.06 3.348 10.186 2 7.5 2v1zm7 4.5a68.887 68.887 0 01-.464-.186l-.003.008-.015.035-.066.145a9.37 9.37 0 01-1.449 2.164C11.44 10.848 9.814 12 7.5 12v1c2.686 0 4.561-1.348 5.747-2.665a10.366 10.366 0 001.61-2.407 6.164 6.164 0 00.104-.236l.002-.004v-.001h.001L14.5 7.5zM7.5 9A1.5 1.5 0 016 7.5H5A2.5 2.5 0 007.5 10V9zM9 7.5A1.5 1.5 0 017.5 9v1A2.5 2.5 0 0010 7.5H9zM7.5 6A1.5 1.5 0 019 7.5h1A2.5 2.5 0 007.5 5v1zm0-1A2.5 2.5 0 005 7.5h1A1.5 1.5 0 017.5 6V5z"
+                                    fill="currentColor"></path>
+                                </svg>
+                            </button>
+
+                            <button id="hide_new_password_btn" onclick="hide_new_password()" class="btn btn-outline-dark" type="button">
+                                <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
+                                    <path
+                                        d="M7.5 9C5.186 9 3.561 7.848 2.497 6.666a9.368 9.368 0 01-1.449-2.164 5.065 5.065 0 01-.08-.18l-.004-.007v-.001L.5 4.5l-.464.186v.002l.003.004a2.107 2.107 0 00.026.063l.078.173a10.367 10.367 0 001.61 2.406C2.94 8.652 4.814 10 7.5 10V9zm7-4.5a68.887 68.887 0 01-.464-.186l-.003.008-.015.035-.066.145a9.37 9.37 0 01-1.449 2.164C11.44 7.848 9.814 9 7.5 9v1c2.686 0 4.561-1.348 5.747-2.666a10.365 10.365 0 001.61-2.406 6.164 6.164 0 00.104-.236l.002-.004v-.001h.001L14.5 4.5zM8 12V9.5H7V12h1zm-6.646-1.646l2-2-.708-.708-2 2 .708.708zm10.292-2l2 2 .708-.708-2-2-.708.708z"
+                                        fill="currentColor"></path>
+                                    </svg>
+                            </button>
+
+                            <hr>
+
+                            <h5 class="card-title fs-3">Changing Zip Code</h5>
+                            <p class="card-text fs-5">Users can change their zip code by entering their new one in the “New Zip Code” field under the “Change Zip Code” section and clicking "Change Zip Code" button.</p>
+
+                            <p class="card-text fs-5 fw-bold">This is what the "Change Zip Code" section looks like:</p>
+
+                            <img class="border mb-2" src="/static/other_images/changezip.png" alt="The Change Zip Code section of the account page" width="500px">
+
+                            <p class="card-text fs-5">Zip Codes are at minimum 5 characters and can only be numbers.</p>
+
+                            <hr>
+
+                            <h5 class="card-title fs-3">Logging Out</h5>
+                            <p class="card-text fs-5">Users can also log out of their account by clicking the yellow “Logout” button in the “Logout” section.</p>
+
+                            <p class="card-text fs-5 fw-bold">This is what the logout button looks like:</p>
+                            <button class="btn mb-2 tertiaryColor">Logout</button>
+
+                            <hr>
+
+                            <h5 class="card-title fs-3">Deleting Account</h5>
+                            <p class="card-text fs-5">Users can delete their account by pressing the “Delete Account” button underneath the section of the same name.</p>
+
+                            <p class="card-text fs-5">When you click the "Delete Account" button, a pop up will appear to make sure you are sure about deleting your account. If you are sure about deleting your account, click the "Delete Account" button.</p>
+
+                            <p class="card-text fs-5 fw-bold">This is what the "Delete Account" buttons look like:</p>
+
+                            <button type="button" class="mt-2 btn btn-lg btn-danger">Delete Account</button>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
