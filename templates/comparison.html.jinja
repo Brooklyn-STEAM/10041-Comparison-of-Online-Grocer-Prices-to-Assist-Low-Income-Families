@@ -22,6 +22,7 @@
                 <div class="card-body row">
                     <div class="col">
                         <h5 class="card-title text-start fs-1">{{product['item_name']}}</h5>
+                        <h6 class="text-start fs-5">Last updated: {{update}}</h6>
                         {%if not current_user.is_authenticated%}
                             <a href="/login" class="save-btn btn btn-danger d-inline-block float-start">
                                 <span class="save-label me-1">Save</span>

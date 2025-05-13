@@ -286,7 +286,8 @@ def comparison(products_id):
         SELECT `updated` FROM `Products` WHERE `id` = {products_id};
     """)
 
-    time = cursor.fetchone()
+    temp = cursor.fetchone()
+    time = temp["updated"].strftime("%m/%d/%Y")
 
     cursor.close()
     conn.close()
@@ -328,7 +329,8 @@ def saved_comparison(products_id):
         SELECT `updated` FROM `Products` WHERE `id` = {products_id};
     """)
 
-    time = cursor.fetchone()
+    temp = cursor.fetchone()
+    time = temp["updated"].strftime("%m/%d/%Y")
 
     cursor.close()
     conn.close()
