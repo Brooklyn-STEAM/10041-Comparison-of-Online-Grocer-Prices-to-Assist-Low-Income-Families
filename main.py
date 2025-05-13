@@ -281,11 +281,17 @@ def comparison(products_id):
         cursor.execute(f"SELECT * FROM `Comparison` JOIN `CompanyList` ON `Comparison`.`company` = `CompanyList`.`id` WHERE `product_id` = {products_id}; ")
 
         comp_results = cursor.fetchall()
+    
+    cursor.execute(f"""
+        SELECT `updated` FROM `Products` WHERE `id` = {products_id};
+    """)
+
+    time = cursor.fetchone()
 
     cursor.close()
     conn.close()
 
-    return render_template("comparison.html.jinja", product=result, comp_products = comp_results)
+    return render_template("comparison.html.jinja", product = result, comp_products = comp_results, update = time)
 
 @app.route("/savecompare/<products_id>")
 def saved_comparison(products_id):
@@ -318,10 +324,16 @@ def saved_comparison(products_id):
 
         comp_results = cursor.fetchall()
 
+    cursor.execute(f"""
+        SELECT `updated` FROM `Products` WHERE `id` = {products_id};
+    """)
+
+    time = cursor.fetchone()
+
     cursor.close()
     conn.close()
 
-    return render_template("saved_comparison.html.jinja", product=result, comp_products = comp_results)
+    return render_template("saved_comparison.html.jinja", product = result, comp_products = comp_results, update = time)
 
 
 ## Leftovers Page
