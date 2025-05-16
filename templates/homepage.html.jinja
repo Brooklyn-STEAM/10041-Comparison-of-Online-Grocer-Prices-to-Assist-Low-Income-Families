@@ -12,27 +12,59 @@
 
   <body>
   {% include "components/navbar.html.jinja"%}
-
-    <h1 class="text-center mt-3">Cheap Carts</h1>
-    <h2 class="text-center mx-3">Buy Cheap Today!</h2>
-    <div class="text-center d-grid col-4 mx-auto">
-      <a href="/products" class="btn btn-lg secondaryColor my-3 text-black fs-3 w-100" id="action-btn">Get Started</a>
-    </div>
-
     <div id="home-img" class="container mt-3">
-    <div class="row">
-        <div class="col-12 col-md-6 position-relative d-inline" id="popular-products">
-            <img src="static/other_images/popular-products.png" class="img-fluid background-image" id="popular-img">
-            <h2 class="text-center text-black position-absolute top-50 start-50 translate-middle foreground-text" id="products-heading">Popular Products
-            <a href="/products" class="btn btn-lg primaryColor text-center mt-1" id="start-btn">Get Started</a></h2>
-        </div>
 
-        <div class="col-12 col-md-6 position-relative d-inline" id="offer">
-            <img src="static/other_images/what-we-offer.png" class="img-fluid background-image" id="offer-img">
-            <h2 class="text-center text-black position-absolute top-50 start-50 translate-middle foreground-text" id="offer-heading">What We Offer</h2>
-        </div>
+    <div class="mt-2" id="home-header">
+      <h1 class="text-center mt-5">Cheap Carts</h1>
+      <h2 class="text-center mx-3">A Simply Way to Simple Food</h2>
+      <div class="text-center d-grid col-4 mx-auto">
+        <a href="/products" class="btn btn-lg secondaryColor my-3 text-black fs-3 w-100" id="action-btn">Buy Cheap Today!</a>
+      </div>
     </div>
     
+    <div id="saved-rule"></div>
+
+    <div class="row mb-2">
+      <div class="col-12 col-md order-1 position-relative d-inline">
+        <h2 class="text-center text-black mt-5"> Our Products  <br>
+        <a href="/products" class="btn btn-lg secondaryColor mt-3 mb-5 text-black fs-3 text-center start-btn"> <span class="home-label">Go to Products</span>
+        <span class="home-arrow ms-2"><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="35" height="35"><path d="M13.5 7.5l-4-4m4 4l-4 4m4-4H1" stroke="currentColor"></path></svg></span>
+        </a> 
+        </h2>
+      </div>
+
+      <div class="col-12 col-md order-2 position-relative d-inline" id="popular-products">
+        <img src="static/other_images/popular-products.png" class="img-fluid background-image" id="popular-img">
+        <h2 class="col text-center text-black position-absolute top-50 start-50 translate-middle foreground-text" id="products-heading">Popular Products
+        <a href="/products" class="btn btn-lg secondaryColor text-center mt-1 start-btn">Get Started</a></h2>
+      </div>
+      
+    </div>
+    
+
+    <div class="row">
+      <div class="col-12 col-md order-1 position-relative d-inline" id="guide">
+        <img src="static/other_images/what-we-offer.png" class="img-fluid background-image" id="guide-img">
+        <h2 class="text-center text-black position-absolute top-50 start-50 translate-middle foreground-text" id="guide-heading">Our Guide
+        <a href="/guide" class="btn btn-lg secondaryColor text-center mt-1 guide-btn">Read the Guide</a></h2>
+      </div>
+
+      <div class="col-12 col-md order-2 position-relative d-inline">
+        <h2 class="text-center text-black mt-5">How to Use <br>
+        <a href="/guide" class="guide-btn btn btn-lg secondaryColor mt-3 mb-5 text-black fs-3 text-center">
+        <span class="home-arrow me-2"><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="35" height="35"><path d="M1.5 7.5l4-4m-4 4l4 4m-4-4H14" stroke="currentColor"></path></svg></span>
+
+        <span class="home-label">Go to Guide</span>
+
+       
+        </a>
+        </h2>
+      </div>
+
+    </div>
+    
+    <div id="saved-rule"></div>
+
     <div class="row">
         <div class="position-relative d-inline" id="mission">
             <img src="static/other_images/mission-statement.png" class="img-fluid background-image" id="mission-img">
