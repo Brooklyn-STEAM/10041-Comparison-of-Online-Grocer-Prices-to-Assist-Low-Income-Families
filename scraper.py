@@ -31,16 +31,18 @@ def conn_db():
 
     return conn
 
-conn = conn_db()
-cursor = conn.cursor()
-cursor.execute(f"""
-    SELECT `item_name` FROM `Products`;
-""")
-searches = cursor.fetchall()
+
 filterSearches = []
-for item in searches:
-    temp = item["item_name"]
-    filterSearches.append(temp)
+
+with open("items.txt", "r") as items:
+    content = items.read()
+    word = ""
+    for item in content:
+        if item != "\n":
+            word = word + item
+        else:
+            filterSearches.append(word)
+            word = ""
 
 
 stuff = filterSearches
