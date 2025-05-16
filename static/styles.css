@@ -1,3 +1,4 @@
+/* Media Queries */
 @media screen and (max-width: 991px) {
     #nav-search {
         margin-bottom: 10px;
@@ -5,6 +6,8 @@
     }
 }
 
+
+/* Base site wide styles */
 body {
     background-color: #FDF2E4;
 }
@@ -41,7 +44,7 @@ body {
 }
 
 .primaryColor {
-    background-color: rgb(44, 100, 54);
+    background-color: #2c6436;
 }
 
 .secondaryColor {
@@ -64,12 +67,13 @@ body {
     border: 1px solid #77A780;
 }
 
-#products-heading, #offer-heading, #mission-heading {
+
+/* Home Page Image Styles */
+#products-heading, #guide-heading {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-
 
 #popular-products:hover #products-heading {
     opacity: 1;
@@ -81,32 +85,19 @@ body {
     background-color: #EFD577;
 }
 
-#offer:hover #offer-heading {
+#guide:hover #guide-heading {
     opacity: 1;
     visibility: visible;
 }
 
-#offer:hover #offer-img {
+#guide:hover #guide-img {
     opacity: 0.5;
 }
 
-#popular-products {
-    border-right: 3px solid #486D4E;
-    border-bottom: 3px solid #486D4E;
-}
-
-#offer {
-    border-left: 3px solid #486D4E;
-    border-bottom: 3px solid #486D4E;
-}
-
-#mission-img {
-    border-top: 3px solid #486D4E;
-}
-
-#start-btn:hover {
-    background-color: #FDF2E4;
+.start-btn:hover, .guide-btn:hover {
+    background-color: #96d4a2;
     border-color: #77A780;
+    color: #000;
 }
 
 #action-btn:hover {
@@ -118,7 +109,7 @@ body {
     padding: 0%;
 }
 
-#offer {
+#guide {
     padding: 0%;
 }
 
@@ -127,6 +118,7 @@ body {
     padding: 0%;
 }
 
+/* Product Page Styles */
 .product-card {
     width: 240px;
 }
@@ -213,6 +205,7 @@ body {
     box-shadow: 0 0 0 .25rem rgba(168, 237, 181,.25);
 }
 
+/* Save button Styles */
 .save-btn .save-label {
     display: none;
 }
@@ -229,7 +222,7 @@ body {
 .save-btn:hover .save-label {
    display: inline;
    color: #cb444b;
-   float: inline-start
+   float: inline-start;
 }
 
 .save-btn:hover .save-heart {
@@ -250,10 +243,6 @@ body {
 
 .nav-search {
     width: 40%;
-}
-
-#home-img {
-    border: 3px solid #486D4E;
 }
 
 #guide-block {
@@ -281,6 +270,7 @@ body {
     border: none;
 }
 
+/* Clear All Saves button styles */
 #save-clear {
     display: flex;
 }
@@ -466,3 +456,66 @@ input:-webkit-autofill:active{
     max-width: 500px;
     min-width: 340px;
 }
+
+/* Home Page button styles */
+.start-btn .home-arrow {
+    display: none;
+}
+
+.home-label {
+    display: none;
+}
+ 
+ .start-btn .home-label {
+    display: inline;
+}
+ 
+ .start-btn:hover {
+    background-color: #96d4a2;
+    color: #000;
+    transition: width 5s;
+}
+ 
+ .start-btn:hover .home-arrow {
+   display: inline;
+   color: #000;
+   float: inline-end;
+}
+ 
+ .start-btn:hover .home-label {
+    display: inline;
+    float: inline-start;
+    color: #000;
+} 
+
+.guide-btn .home-arrow {
+    display: none;
+}
+
+.home-label {
+    display: none;
+}
+ 
+ .guide-btn .home-label {
+    display: inline;
+}
+ 
+ .guide-btn:hover {
+    background-color: #96d4a2;
+    color: #000;
+    transition: width 5s;
+}
+ 
+ 
+ .guide-btn:hover .home-arrow {
+   display: inline;
+   color: #000;
+   float: inline-start;
+}
+ 
+ .guide-btn:hover .home-label {
+    display: inline;
+    float: inline-end;
+    color: #000;
+}
+
