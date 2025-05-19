@@ -328,7 +328,7 @@ for search in stuff:
                 INSERT INTO `Products`
                 (`item_name`, `item_image`, `updated`)
                 VALUES
-                ('{search}', 'temp', '{today}')
+                ('{search}', '/static/products/', '{today}')
                 ON DUPLICATE KEY UPDATE
                 `item_name` = '{search}',
                 `updated` = '{today}';
