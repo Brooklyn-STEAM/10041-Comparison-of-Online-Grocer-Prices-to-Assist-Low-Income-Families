@@ -486,7 +486,7 @@ def change_password():
     elif new_password != confirm_password:
         flash("Your new passwords do not match")
     elif len(new_password) < 8:
-        flash("New Password is Too Short, must be longer than 8 characters")
+        flash("New Password is Too Short, must be 8 characters or longer")
     else:
         cursor.execute(f"""UPDATE `Users` 
             SET `password` = '{new_password}'
