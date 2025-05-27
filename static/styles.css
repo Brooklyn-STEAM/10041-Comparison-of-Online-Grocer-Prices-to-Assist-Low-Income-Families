@@ -519,3 +519,7 @@ input:-webkit-autofill:active{
     color: #000;
 }
 
+.tutorial {
+    position: sticky;
+    top: 87px;
+}
