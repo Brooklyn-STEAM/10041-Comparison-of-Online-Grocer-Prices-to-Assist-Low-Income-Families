@@ -532,17 +532,56 @@ def change_zipcode():
 
     return redirect("/settings")
 
-## Delete Account
-@app.route("/settings/delete_account", methods=["POST"])
+
+## Delete Account Page
+@app.route("/delete_account")
 @flask_login.login_required
-def delete_account():
+def delete():
     conn = conn_db()
     cursor = conn.cursor()
 
     user_id = flask_login.current_user.id
 
-    cursor.execute(f"DELETE FROM `Cart` WHERE `user_id` = {user_id}; ")
-    cursor.execute(f"DELETE FROM `Users` WHERE `id` = {user_id}; ")
+    cursor.execute(f"""
+                    SELECT * FROM `Users` WHERE `id` = {user_id};
+                    """)
+    
+    results = cursor.fetchone()
+    
+    cursor.close()
+    conn.close()
+    return render_template("delete_account.html.jinja", user=results)
+
+
+## Delete Account Form
+@app.route("/settings/delete", methods=["POST"])
+@flask_login.login_required
+def delete_account():
+    confirm_username = request.form["confirmUsernameDeleteInput"].strip().replace(" ", "")
+    confirm_password = request.form["confirmPasswordDeleteInput"].strip().replace(" ", "")
+
+    conn = conn_db()
+    cursor = conn.cursor()
+
+    user_id = flask_login.current_user.id
+
+    cursor.execute(f"SELECT `username` FROM `Users` WHERE `id` = {user_id}")
+
+    result_user = cursor.fetchone()
+
+    cursor.execute(f"SELECT `password` FROM `Users` WHERE `id` = {user_id}")
+
+    result_pass = cursor.fetchone()
+
+    if confirm_username != result_user["username"]:
+        flash("Username or Password Incorrect")
+        return redirect("/delete_account")
+    elif confirm_password != result_pass["password"]:
+        flash("Username or Password Incorrect")
+        return redirect("/delete_account")
+    else:
+        cursor.execute(f"DELETE FROM `Cart` WHERE `user_id` = {user_id}; ")
+        cursor.execute(f"DELETE FROM `Users` WHERE `id` = {user_id}; ")
    
 
     cursor.close()
