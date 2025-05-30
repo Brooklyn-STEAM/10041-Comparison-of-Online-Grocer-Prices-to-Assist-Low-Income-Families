@@ -151,18 +151,19 @@ body {
 }
 
 .back-products {
-    background-color: #77A780;
+    background-color: #486D4E;
     border-color: #5C8463;
+    color: white;
 }
 
 .back-products:hover {
-    background-color: #486D4E;
+    background-color: #96d4a2;
     border-color: #77A780;
     color: white;
 }
 
 .saved-card:hover {
-    background-color: #77A780;
+    background-color: #96d4a2;
     border-color: #5C8463;
 }
 
@@ -523,3 +524,31 @@ input:-webkit-autofill:active{
     position: sticky;
     top: 87px;
 }
+
+.unsave-trash-btn .trash-label {
+    display: none;
+}
+ 
+.unsave-trash-btn .unsave-can {
+    display: inline;
+}
+ 
+.unsave-trash-btn:hover {
+    background-color: #ffffff;
+    transition: width 5s;
+}
+ 
+ 
+.unsave-trash-btn:hover .trash-label {
+   display: inline;
+   color: #cb444b;
+   float: inline-start;
+}
+ 
+.unsave-trash-btn:hover .unsave-can {
+    display: inline;
+    float: inline-end;
+    color: #cb444b;
+}
+ 
+ 
