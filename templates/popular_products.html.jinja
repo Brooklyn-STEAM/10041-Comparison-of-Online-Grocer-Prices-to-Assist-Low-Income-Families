@@ -14,6 +14,62 @@
 
 <body>
   {% include "components/navbar.html.jinja"%}
+  <button type="button" class="btn m-1 tutorial" data-bs-toggle="modal" data-bs-target="#guideModal">
+
+    <svg data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Tutorial" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30"><path d="M7.5 9V7.5H8A1.5 1.5 0 009.5 6v-.1a1.4 1.4 0 00-1.4-1.4h-.6A1.5 1.5 0 006 6m1 4.5h1m-.5 4a7 7 0 110-14 7 7 0 010 14z" stroke="currentColor"></path></svg>
+
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="guideModal" tabindex="-1" aria-labelledby="guideModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-4" id="guideModalLabel">Guide to Products</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body fs-5">
+          <h3>Hello!</h3>
+          <p>This is the product page, here you can search for products and find different prices.</p>
+          <p>All you need to do is click on a product, from there it will take you to its individual page. On the individual page, you can see the product from different retailers. Clicking on one of the retailers' cards will take you to the search results for that item on the retailers page and you can find prices that work for you.</p>
+          <hr>
+
+          <h3>Saving Items</h3>
+          <p>In order to save an item, click the red heart button at the bottom of the item card. </p>
+
+          <p class="fw-bold">The Save button looks like this:</p>
+          <button class="save-btn btn btn-danger mb-3 mt-2">
+            <span class="save-label">Save </span>
+            <span class="save-heart"> <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+              <path
+                d="M7.5 13.5l-.354.354a.5.5 0 00.708 0L7.5 13.5zM1.536 7.536l-.354.353.354-.353zm5-5l-.354.353.354-.353zM7.5 3.5l-.354.354a.5.5 0 00.708 0L7.5 3.5zm.964-.964l-.353-.354.353.354zm-.61 10.61L1.889 7.182l-.707.707 5.964 5.965.708-.708zm5.257-5.964l-5.965 5.964.708.708 5.964-5.965-.707-.707zM6.182 2.889l.964.965.708-.708-.965-.964-.707.707zm1.672.965l.964-.965-.707-.707-.965.964.708.708zM10.964 1c-1.07 0-2.096.425-2.853 1.182l.707.707A3.037 3.037 0 0110.964 2V1zM14 5.036c0 .805-.32 1.577-.89 2.146l.708.707A4.036 4.036 0 0015 5.036h-1zm1 0A4.036 4.036 0 0010.964 1v1A3.036 3.036 0 0114 5.036h1zM4.036 2c.805 0 1.577.32 2.146.89l.707-.708A4.036 4.036 0 004.036 1v1zM1 5.036A3.036 3.036 0 014.036 2V1A4.036 4.036 0 000 5.036h1zm.89 2.146A3.035 3.035 0 011 5.036H0c0 1.07.425 2.096 1.182 2.853l.707-.707z" fill="currentColor"></path>
+              </svg></span>
+          </button>
+
+          <p>When you save an item, you can unsave it through clicking the white "Saved" button that appears in the original save button's place.</p>
+
+          <p class="fw-bold">The Saved button looks like this:</p>
+            <button type="button" class="unsave-btn product-btn save-btn btn btn-white border-black my-2">
+              <span>Saved</span>
+              <span><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                <path d="M7.5 13.5l-.354.354a.5.5 0 00.708 0L7.5 13.5zM1.536 7.536l-.354.353.354-.353zm5-5l-.354.353.354-.353zM7.5 3.5l-.354.354a.5.5 0 00.708 0L7.5 3.5zm.964-.964l-.353-.354.353.354zm-.61 10.61L1.889 7.182l-.707.707 5.964 5.965.708-.708zm5.257-5.964l-5.965 5.964.708.708 5.964-5.965-.707-.707zM6.182 2.889l.964.965.708-.708-.965-.964-.707.707zm1.672.965l.964-.965-.707-.707-.965.964.708.708zM10.964 1c-1.07 0-2.096.425-2.853 1.182l.707.707A3.037 3.037 0 0110.964 2V1zM14 5.036c0 .805-.32 1.577-.89 2.146l.708.707A4.036 4.036 0 0015 5.036h-1zm1 0A4.036 4.036 0 0010.964 1v1A3.036 3.036 0 0114 5.036h1zM4.036 2c.805 0 1.577.32 2.146.89l.707-.708A4.036 4.036 0 004.036 1v1zM1 5.036A3.036 3.036 0 014.036 2V1A4.036 4.036 0 000 5.036h1zm.89 2.146A3.035 3.035 0 011 5.036H0c0 1.07.425 2.096 1.182 2.853l.707-.707z" fill="currentColor"></path>
+              </svg></span>
+            </button>
+
+          <p>Saving items put them in your <a href="/leftovers" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Leftovers</a>. From <a href="/leftovers" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Leftovers</a> you can search through your saved items, unsave items, and clear all saved items.</p>
+
+          <hr class="invisible">
+          
+          <p class="fw-bold">For more information, see our <a href="/guide" class="guide-link text-Cambridge link-underline link-underline-opacity-0">Guide</a>!</p>
+        </div>
+        <div class="modal-footer">
+          <a href="/guide" class="btn secondaryColor">Go to Guide</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <h1 class="text-center my-2">Popular Products</h1>
 
   <main class="container">
@@ -221,6 +277,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+
+  <script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+  </script>
 </body>
 
 </html>
