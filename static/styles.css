@@ -9,7 +9,7 @@
 
 /* Base site wide styles */
 body {
-    background-color: #FDF2E4;
+    background-color: #fffdfb;
 }
 
 .text-OldLace {
@@ -121,6 +121,7 @@ body {
 /* Product Page Styles */
 .product-card {
     width: 240px;
+    background-color: #dfdfdf;
 }
 
 .product-card:hover {
