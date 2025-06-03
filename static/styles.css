@@ -201,6 +201,10 @@ body {
     color: black;
 }
 
+.account-btn:active {
+    --bs-btn-active-bg: #96d4a2;
+}
+
 .text-box:focus {
     border-color: #96d4a2;
     box-shadow: 0 0 0 .25rem rgba(168, 237, 181,.25);

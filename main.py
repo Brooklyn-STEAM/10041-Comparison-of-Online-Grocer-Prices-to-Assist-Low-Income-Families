@@ -516,7 +516,7 @@ def change_zipcode():
 
     result = cursor.fetchone()
 
-    if new_zipcode.isalpha() == True:
+    if new_zipcode.isnumeric() == False:
         flash("Zip Code can only be numbers")
     elif new_zipcode == result["zipcode"]:
         flash("New Zip Code cannot match existing zip code")
